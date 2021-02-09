@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://uploader.shimo.im/f/UnBSkZkgl0NN9VuT.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g">
 <meta property="og:image" content="https://uploader.shimo.im/f/h1k2lh5gXEd8Tc0Q.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g">
 <meta property="article:published_time" content="2021-02-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-02-09T15:14:10.614Z">
+<meta property="article:modified_time" content="2021-02-09T15:46:47.133Z">
 <meta property="article:author" content="crushdada">
 <meta property="article:tag" content="creative">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-02-09 00:00:00 / 修改时间：23:14:10" itemprop="dateCreated datePublished" datetime="2021-02-09T00:00:00+08:00">2021-02-09</time>
+              <time title="创建时间：2021-02-09 00:00:00 / 修改时间：23:46:47" itemprop="dateCreated datePublished" datetime="2021-02-09T00:00:00+08:00">2021-02-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -301,8 +301,8 @@
 <pre><code>1. 确保你的博客本地存储位置中的_config.yml文件中branch的值为**默认分支名**
 </code></pre>
 <p><img src="https://uploader.shimo.im/f/jt4ZhSPBpaCKvnt4.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g" alt="图片"></p>
-<pre><code>2. 假设你只有main和master两个分支，那么从 2020年10月1日开始之后GitHub默认分支已经由master改为main，我这里选择部署到master分支，我就需要先修改默认分支为master。
-3. 关于如何修改默认分支
+<pre><code>2. 假设你只有main和master两个分支，那么从 2020 年 10 月 1 日开始之后GitHub默认分支已经由master改为main，我这里选择部署到master分支，我就需要先修改默认分支为master。
+3. 关于如何修改默认分支：
 </code></pre>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xuchaoxin1375/article/details/111414527">https://blog.csdn.net/xuchaoxin1375/article/details/111414527</a></p>
 <p>关于为何Github要修改主库名字：</p>
@@ -324,7 +324,16 @@
 <li>属性与值之间的空格</li>
 </ol>
 <ul>
-<li>切记–设置config.yml文件，每个属性后面的冒号和值之间都要有一个英文空格，否则无法生效<h2 id="未完待续ing…"><a href="#未完待续ing…" class="headerlink" title="未完待续ing…"></a>未完待续ing…</h2></li>
+<li><p>切记–设置config.yml文件，每个属性后面的冒号和值之间都要有一个英文空格，否则无法生效</p>
+<h3 id="5-css样式失效了…吗？"><a href="#5-css样式失效了…吗？" class="headerlink" title="5.css样式失效了…吗？"></a>5.css样式失效了…吗？</h3></li>
+<li><p>localhost运行良好，然后部署完登录页面发现css样式罢工</p>
+</li>
+<li><p>结果等了快5分钟才加载出来，原来是拖延症呀…</p>
+</li>
+<li><p>css样式Firefox、chrome和Microsoft Edge都兼容完好</p>
+</li>
+<li><p>尝试优化图片加载</p>
+<h2 id="未完待续ing…"><a href="#未完待续ing…" class="headerlink" title="未完待续ing…"></a>未完待续ing…</h2></li>
 </ul>
 
     </div>
@@ -421,7 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%AD%A5%E9%AA%A4%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">整体步骤参考链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E4%B8%BB%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">两个主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Blog%E5%90%84%E9%83%A8%E5%88%86%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">自定义Blog各部分的样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E4%BE%A7%E8%BE%B9%E6%A0%8F%E4%B8%80%E8%A1%8C%E6%98%BE%E7%A4%BA%E5%A4%9A%E4%B8%AA%E5%8F%8B%E9%93%BE"><span class="nav-number">3.1.</span> <span class="nav-text">3.设置侧边栏一行显示多个友链</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%BC%96%E8%BE%91%E5%B9%B6%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-number">4.</span> <span class="nav-text">如何编辑并发布文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91"><span class="nav-number">5.</span> <span class="nav-text">踩坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%ADing%E2%80%A6"><span class="nav-number">6.</span> <span class="nav-text">未完待续ing…</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%AD%A5%E9%AA%A4%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">整体步骤参考链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E4%B8%BB%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">两个主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Blog%E5%90%84%E9%83%A8%E5%88%86%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">自定义Blog各部分的样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E4%BE%A7%E8%BE%B9%E6%A0%8F%E4%B8%80%E8%A1%8C%E6%98%BE%E7%A4%BA%E5%A4%9A%E4%B8%AA%E5%8F%8B%E9%93%BE"><span class="nav-number">3.1.</span> <span class="nav-text">3.设置侧边栏一行显示多个友链</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%BC%96%E8%BE%91%E5%B9%B6%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-number">4.</span> <span class="nav-text">如何编辑并发布文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91"><span class="nav-number">5.</span> <span class="nav-text">踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-css%E6%A0%B7%E5%BC%8F%E5%A4%B1%E6%95%88%E4%BA%86%E2%80%A6%E5%90%97%EF%BC%9F"><span class="nav-number">5.1.</span> <span class="nav-text">5.css样式失效了…吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%ADing%E2%80%A6"><span class="nav-number">6.</span> <span class="nav-text">未完待续ing…</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
