@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">2</span></a>
 
   </li>
   </ul>
@@ -192,7 +192,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-02-11 00:00:00 / 修改时间：22:56:31" itemprop="dateCreated datePublished" datetime="2021-02-11T00:00:00+08:00">2021-02-11</time>
+              <time title="创建时间：2021-02-11 00:00:00 / 修改时间：23:23:13" itemprop="dateCreated datePublished" datetime="2021-02-11T00:00:00+08:00">2021-02-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -217,125 +217,14 @@
       
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先，先说好即使你完全不了解机器学习、神经网络和数字图像处理的相关知识，也不用怕，因为总得有个从0到1的过程。</p>
 <p>“这个一点也不难，其实你们自己完全能够做一个感知机”…</p>
-<hr>
-<h2 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h2><h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a><strong>机器学习</strong></h3><p><strong>Machine Learning：</strong>通过给机器(计算机)预设一些算法，来让它模拟人的智能，从而相对独立地完成一些任务。</p>
-<h3 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a><strong>神经网络</strong></h3><p><strong>Neural Network：</strong>是实现机器学习任务的一种方法，其结构模拟生物神经系统，与外界交互。</p>
-<h3 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a><strong>感知机</strong></h3><p><strong>Perceptron**</strong>：**是一种人工神经网络，是生物神经细胞的简单抽象，它的作用是区分两个具有不同特征的事物。因为感知机是这样一个二元分类模型(区分2个东西)，所以我们使用它来进行0、1图像的区分。</p>
-<p>在本篇中，感知机就是一个数组w和一个数b而已。我们要做的就是训练计算机来寻找这样的w和b使其代入感知机模型函数中能够区分0、1图像。</p>
-<p>下面给出两幅图给出神经网络与感知机的区别，直观感受一下–</p>
-<p>神经网络：</p>
-<p><img src="https://uploader.shimo.im/f/SZxjzS1FluyxqHfZ.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<p>感知机：</p>
-<p><img src="https://uploader.shimo.im/f/544p0OVp2eO8ujsl.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<h3 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiaxin359/p/9011457.html">https://www.cnblogs.com/jiaxin359/p/9011457.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xym4869/p/11282469.html">https://www.cnblogs.com/xym4869/p/11282469.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/huangyc/p/9706575.html">https://www.cnblogs.com/huangyc/p/9706575.html</a></p>
-<hr>
-<h2 id="实现步骤概述"><a href="#实现步骤概述" class="headerlink" title="实现步骤概述"></a>实现步骤概述</h2><h3 id="感知机模型："><a href="#感知机模型：" class="headerlink" title="感知机模型："></a><strong>感知机模型</strong>：</h3><p>f(x)=sign(wx+b)</p>
-<ol>
-<li><strong>图像采集</strong></li>
-<li>数据集划分</li>
-<li>训练集</li>
-<li>测试集</li>
-<li><strong>图像预处理</strong></li>
-<li>读取所有图像</li>
-<li>灰度化</li>
-<li>二值化</li>
-<li>打标签：为每个图像设置图像真值y：1或-1</li>
-<li><strong>取特征x</strong></li>
-<li>将每幅图像划分为n×n个小格</li>
-<li>计算每个小格中黑色像素点个数</li>
-<li>该图像的特征x即为一个n*n的矩阵，其中每个元素对应一个小格的黑色像素点个数</li>
-<li><strong>模型训练</strong></li>
-<li>读取所有训练集图像及对应特征</li>
-<li>初始化模型参数w0,b0，步长η</li>
-<li>计算每幅图像的预测值<ol>
-<li>计算：f(x)=sign(wx+b)</li>
-<li>w0*x+b0＞0，图片预测值f(x)=1</li>
-<li>w0*x+b0＜0，图片预测值f(x)=-1</li>
-</ol>
-</li>
-<li>比较每幅图像的预测值f(x)和真值y<ol>
-<li>如果都相同，则证明模型参数拟合完好，训练完毕</li>
-<li>当二者不同时，该图像识别错误，根据公式更新w0,b0</li>
-</ol>
-</li>
-</ol>
-<p>w0=w0+η<em>xi</em>yi</p>
-<p>b0=b0+η*yi</p>
-<p>ps：上述公式中xi和yi为该图像的特征值和真值</p>
-<ol start="5">
-<li><strong>模型测试(识别测试集图像)</strong><pre><code> 1. 读取测试集图像及对应特征
- 2. 计算每幅图像的**预测值**
- 3. 比较预测值和真值
-     1. 二者相同，则证明拟合，记录拟合的图像个数
- 4. 得到感知机的**识别正确率**
-     1. 以**识别正确率**作为量化感知机好坏的标准
-</code></pre>
-</li>
-</ol>
-<hr>
-<h2 id="实际实现："><a href="#实际实现：" class="headerlink" title="实际实现："></a>实际实现：</h2><h3 id="一、图像采集"><a href="#一、图像采集" class="headerlink" title="一、图像采集"></a>一、图像采集</h3><p>自己用画图，画两组样本图像，即0和1各10张</p>
-<p>我的样本图像存储方式：</p>
-<p><img src="https://uploader.shimo.im/f/JwzQPJrq7Fb28CMp.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<h3 id="二、取特征"><a href="#二、取特征" class="headerlink" title="二、取特征"></a>二、取特征</h3><p>1.传入图片存储路径</p>
-<p>2.根据图片名依次遍历10张图片</p>
-<p>3.逻辑意义上，将每张图片划分为49维</p>
-<p>4.两层循环遍历每个维度，累计黑色像素个数</p>
-<p>5.返回二维列表[10][49]</p>
-<p><img src="https://uploader.shimo.im/f/COm3Df2ixwE5Zn3m.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<h3 id="三、一些初始化"><a href="#三、一些初始化" class="headerlink" title="三、一些初始化"></a>三、一些初始化</h3><p>全局变量W：weight0（49维列表）</p>
-<p>全局变量b：bias0</p>
-<p>学习效率η：learning_rate</p>
-<p>打上标签y：向二维列表追加第50个数作为标签</p>
-<p><img src="https://uploader.shimo.im/f/4Tf1tUxzmscQSiCP.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<h3 id="四、感知机训练函数"><a href="#四、感知机训练函数" class="headerlink" title="四、感知机训练函数"></a>四、感知机训练函数</h3><p><img src="https://uploader.shimo.im/f/2NwCoi8N7jwZL8HK.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<p><img src="https://uploader.shimo.im/f/rSTwUP7utNrQkKu3.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<h3 id="五、训练函数中用到的cal-和sign-函数"><a href="#五、训练函数中用到的cal-和sign-函数" class="headerlink" title="五、训练函数中用到的cal()和sign()函数"></a>五、训练函数中用到的cal()和sign()函数</h3><p>cal(train_weight)–用于计算<strong>wx+b</strong><img src="https://uploader.shimo.im/f/EgMk5hnrhFyzfdn7.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<p>sign(v)—用于确定最终分类(1 or -1)</p>
-<p><img src="https://uploader.shimo.im/f/fHIWTYAvWHUSby9O.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<h3 id="六、测试感知机"><a href="#六、测试感知机" class="headerlink" title="六、测试感知机"></a>六、测试感知机</h3><p>狠简单的一个测试函数<strong>test(test_data)</strong></p>
-<p>1.传入测试数据(10张图片的二维列表，初始化时已经得到</p>
-<ol start="2">
-<li>依次遍历10张图片的数据</li>
-</ol>
-<p>3.调用cal()函数返回感知器计算得出的结果(1 /-1)</p>
-<p>4.比较返回值与标签，累计判断正确的次数</p>
-<p>5.输出感知器识别的正确率</p>
-<p><img src="https://uploader.shimo.im/f/4xEOkC09GGoYotGQ.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<h3 id="End、我的测试结果"><a href="#End、我的测试结果" class="headerlink" title="End、我的测试结果"></a><strong>End、我的测试结果</strong></h3><p><img src="https://uploader.shimo.im/f/wxt3EanMfvksbLy4.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<hr>
-<h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><p>在实现过程中不可避免地遇到了一些问题，</p>
-<h3 id="其一"><a href="#其一" class="headerlink" title="其一"></a>其一</h3><p>计算w*x，由于两者都是较长的列表，因此采用np.multiply()+np.array()进行矩阵相乘，考虑到特征x是多了一个标签[真值y]缀在列表最后面的，而该方法要求两列表等长，因此又预先用list.pop()方法丢掉了最后一位才行…</p>
-<h3 id="其二"><a href="#其二" class="headerlink" title="其二"></a>其二</h3><p>这是一个大坑吧，我觉得：在我测试的过程中，发现无论怎样调参(更改w、b和步长)，感知机运行过程中我预设的一些输出都相同，包括参数的修正次数以及最后的识别正确率。但是没用报错，这意味着要么我的逻辑错了，要么逻辑实现不完善，因此我重新犁了整个思路，最终发现我在循环完一张图像后，识别失败的情况下，<strong>没有重新回到第一幅图</strong>。由于[循环]是按顺序对图片进行一系列操作的，这就导致–可能第三幅图刚刚修正完毕，能够识别成功后，之前的两幅图根据新的w、b却不能识别成功了。</p>
-<p>错误之处如下</p>
-<p><img src="https://uploader.shimo.im/f/xufuxk80S3WQzksN.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<p><strong>我原来的想法是直接令m=0，从而控制循环的顺序，但这是错误的。由于某些原因，为m的赋值没有影响到遍历的顺序。</strong></p>
-<h3 id="更有意思的事情"><a href="#更有意思的事情" class="headerlink" title="更有意思的事情"></a>更有意思的事情</h3><p>运行一个简单的循环进行测试，我发现了更有意思的事情–</p>
-<p><img src="https://uploader.shimo.im/f/wFt59zmk17LmgFkO.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<p>你会发现结果为0，1，2，3，4，<strong>4</strong></p>
-<p>而在内部令m=2：</p>
-<p><img src="https://uploader.shimo.im/f/D2bwMwLZ7iUcDdX0.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8" alt="图片"></p>
-<p>你会发现结果为0，1，2，3，4，<strong>2</strong></p>
-<p>这意味着–for循环中定义的临时变量作用不局限于for循环内，for循环中最后的一次赋值泄露到了循环外。</p>
-<p>而最后一次赋值为2后，range()方法返回的列表遍历完毕，没有新的赋值，for循环结束，此时再print，m的值当然为2了。</p>
-<p>我错在没有深入理解for循环的原理–</p>
-<p>for循环调用了range()方法返回了一个类似列表的可迭代对象，会先按既定的顺序给临时变量m赋值，之后再执行循环体，因此每次赋值m=0都没有起作用。</p>
-<p>我现在是Python3，而Python2中range()方法会返回一个列表，详情见–</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/marsjhao/article/details/56853316">https://blog.csdn.net/marsjhao/article/details/56853316</a></p>
-<p>既定的顺序由传入的参数确定，详情见–</p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-func-range.html">https://www.runoob.com/python/python-func-range.html</a></p>
-<h3 id="再者"><a href="#再者" class="headerlink" title="再者"></a>再者</h3><p>最后就是读取图像的方法太过复杂，我简单粗暴地用循环进行读取，直到全部工作完成，才后知后觉想到能直接用python os模块…</p>
-<hr>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>还有许许多多的小问题和bug，但最终总算是完成了吧。从0到1的一个过程，还是蛮有意思的，也得到了教训–除了自身逻辑思维是有限的，语言工具也是有限的，不同的语言会有不同的局限性，只有熟练地掌握一种工具，才能更好地使用它。</p>
-<p>PS：由于程序中使用到绝对路径，无法保证该程序的移植性，因此需要在copy后做一些简单的修改。</p>
-<hr>
-<h2 id="附上源码："><a href="#附上源码：" class="headerlink" title="附上源码："></a>附上源码：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">root_path=<span class="string">&quot;C:/Users/Administrator/Desktop/test/&quot;</span></span><br><span class="line">train_path=root_path+<span class="string">&quot;train_imges/&quot;</span></span><br><span class="line">test_path=root_path+<span class="string">&quot;test_imges/&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span>(<span class="params">path</span>):</span></span><br><span class="line">    data=[]</span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>): </span><br><span class="line">        img=cv2.imread(path+<span class="built_in">str</span>(w+<span class="number">1</span>)+<span class="string">&quot;.jpg&quot;</span>,<span class="number">0</span>)</span><br><span class="line">        offsetRow=<span class="number">0</span></span><br><span class="line">        offsetCol=<span class="number">0</span></span><br><span class="line">        b=<span class="number">100</span></span><br><span class="line">        m=img.shape[<span class="number">0</span>]//b</span><br><span class="line">        n=img.shape[<span class="number">1</span>]//b</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># print(m,n) </span></span><br><span class="line">        count_all=[]         <span class="comment">#一张图片中49个的小格的各个黑色像素数目</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):  </span><br><span class="line">            offsetRow=i*b</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                offsetCol=j*b</span><br><span class="line">                im=img[offsetRow:offsetRow+b-<span class="number">1</span>,offsetCol:offsetCol+b-<span class="number">1</span>]</span><br><span class="line">                <span class="comment"># print(offsetRow,offsetRow+b-1,offsetCol,offsetCol+b-1)</span></span><br><span class="line">                count=<span class="number">0</span>       <span class="comment">#一个100*100小格中的黑色像素数目</span></span><br><span class="line">                <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span> (<span class="number">99</span>):</span><br><span class="line">                    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span> (<span class="number">99</span>):</span><br><span class="line">                        <span class="keyword">if</span>(im[x][y]==<span class="number">0</span>):</span><br><span class="line">                            count=count+<span class="number">1</span></span><br><span class="line">                count_all.append(count)</span><br><span class="line">        data.append(count_all) </span><br><span class="line">    <span class="keyword">return</span> data        </span><br><span class="line"><span class="comment">#sign函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sign</span>(<span class="params">v</span>):</span></span><br><span class="line">      <span class="keyword">if</span> v &gt; <span class="number">0</span>:</span><br><span class="line">          <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">#校验W、b</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span>(<span class="params">train_weight</span>):</span></span><br><span class="line">   </span><br><span class="line">    x=train_weight[<span class="number">49</span>]</span><br><span class="line">    train_weight.pop()</span><br><span class="line">    result = np.multiply(np.array(weight0),np.array(train_weight))</span><br><span class="line">    <span class="built_in">sum</span>=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(result)):</span><br><span class="line">        <span class="built_in">sum</span>=<span class="built_in">sum</span>+result[k]</span><br><span class="line">        <span class="built_in">sum</span>=<span class="built_in">sum</span>+bias0</span><br><span class="line">    train_weight.append(x)</span><br><span class="line">    judge=sign(<span class="built_in">sum</span>)</span><br><span class="line">    <span class="keyword">return</span> judge</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">training</span>(<span class="params">train_data</span>):</span></span><br><span class="line">      <span class="keyword">global</span> weight0</span><br><span class="line">      <span class="keyword">global</span> bias0</span><br><span class="line">      count=<span class="number">0</span></span><br><span class="line">      <span class="keyword">while</span> <span class="literal">True</span>:  </span><br><span class="line">            <span class="keyword">for</span> m <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):  <span class="comment">#第几幅图像</span></span><br><span class="line">                <span class="keyword">if</span>(train_data[m][<span class="number">49</span>]!=cal(train_data[m])): <span class="comment">#如果校验错误，则更新w、b</span></span><br><span class="line">                    <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">49</span>): <span class="comment">#40列中第几列</span></span><br><span class="line">                        <span class="comment"># 更新权重</span></span><br><span class="line">                        weight0[n] = weight0[n] + \</span><br><span class="line">                                      learning_rate * \</span><br><span class="line">                                      train_data[m][n] * \</span><br><span class="line">                                      train_data[m][<span class="number">49</span>]  </span><br><span class="line">                        <span class="comment"># 更新偏置量</span></span><br><span class="line">                        bias0 = bias0 + learning_rate * \</span><br><span class="line">                                train_data[m][<span class="number">49</span>]*<span class="number">1.00</span>  </span><br><span class="line">            <span class="comment">#10幅图片每循环一轮(最多更新10次W、b)后，检查是否已经全部拟合                   </span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):  </span><br><span class="line">                <span class="keyword">if</span> train_data[j][<span class="number">49</span>]==cal(train_data[j]):</span><br><span class="line">                    count += <span class="number">1</span>  <span class="comment">#拟合图片个数</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    count = <span class="number">0</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> count==<span class="number">10</span>:  <span class="comment">#全部拟合，则退出while循环</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">      print(<span class="string">&quot;训练出的W为: &quot;</span>)</span><br><span class="line">      print(weight0)</span><br><span class="line">      print(<span class="string">&quot;训练出的b为: &quot;</span>)</span><br><span class="line">      print(bias0)</span><br><span class="line">      <span class="keyword">return</span> weight0,bias0</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>(<span class="params">test_data</span>):</span></span><br><span class="line">      add=<span class="number">0.00</span></span><br><span class="line">      <span class="keyword">for</span> q <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):  <span class="comment">#第几幅图像</span></span><br><span class="line">          <span class="comment"># print(type(cal(test_data[q]))    </span></span><br><span class="line">          <span class="keyword">if</span> (cal(test_data[q])==test_data[q][<span class="number">49</span>]):</span><br><span class="line">              add=add+<span class="number">1</span></span><br><span class="line">              </span><br><span class="line">      right_rate=add/<span class="number">10.00</span></span><br><span class="line">      right_rate=right_rate*<span class="number">100</span></span><br><span class="line">      print(<span class="string">&#x27;感知机判断正确率为:&#x27;</span>)</span><br><span class="line">      print(<span class="string">&quot;%d&quot;</span> %right_rate+<span class="string">&#x27;%&#x27;</span>)</span><br><span class="line"><span class="comment">#获取训练和测试感知机的两组数据</span></span><br><span class="line">train_data=get_data(train_path) <span class="comment">#训练数据</span></span><br><span class="line">test_data=get_data(test_path)  <span class="comment">#测试数据</span></span><br><span class="line"><span class="comment">#初始化W0、b0、学习效率η</span></span><br><span class="line">weight0 = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">1300</span>, <span class="number">1300</span>, <span class="number">1300</span>, <span class="number">100</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1000</span>, <span class="number">1300</span>, <span class="number">1300</span>, <span class="number">50</span>, <span class="number">1300</span>, <span class="number">0</span>,<span class="number">0</span>, <span class="number">1300</span>, <span class="number">1000</span>, <span class="number">0</span>, <span class="number">1300</span>, <span class="number">1300</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">400</span>, <span class="number">1300</span>, <span class="number">6</span>, <span class="number">400</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1300</span>, <span class="number">2000</span>, <span class="number">1300</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,<span class="number">0</span>]  <span class="comment"># 权重</span></span><br><span class="line">bias0 = -<span class="number">100.00</span>  </span><br><span class="line">learning_rate = <span class="number">0.10</span>  </span><br><span class="line"><span class="comment">#人工打上标签(默认图像1为正样本，图像0为负样本)</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>):</span><br><span class="line">        train_data[i].append(-<span class="number">1</span>)</span><br><span class="line">        test_data[i].append(-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        train_data[i].append(<span class="number">1</span>)</span><br><span class="line">        test_data[i].append(<span class="number">1</span>)</span><br><span class="line"><span class="comment">#训练感知机</span></span><br><span class="line">training(train_data)</span><br><span class="line"><span class="comment">#测试感知机</span></span><br><span class="line">test(test_data)           </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-
-
-
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0--python%E5%AE%9E%E7%8E%B0%E6%84%9F%E7%9F%A5%E6%9C%BA%E8%AF%86%E5%88%AB01%E5%9B%BE%E5%83%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -377,10 +266,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-02-09 00:00:00 / 修改时间：23:46:47" itemprop="dateCreated datePublished" datetime="2021-02-09T00:00:00+08:00">2021-02-09</time>
+              <time title="创建时间：2021-02-09 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-09T00:00:00+08:00">2021-02-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-11 23:38:10" itemprop="dateModified" datetime="2021-02-11T23:38:10+08:00">2021-02-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -402,182 +297,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="整体步骤参考链接"><a href="#整体步骤参考链接" class="headerlink" title="整体步骤参考链接"></a>整体步骤参考链接</h2><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/d8072ac47aca0fec95cefd2d.html">https://jingyan.baidu.com/article/d8072ac47aca0fec95cefd2d.html</a></p>
-<h2 id="两个主题"><a href="#两个主题" class="headerlink" title="两个主题"></a>两个主题</h2><ul>
-<li>landscap+：<a target="_blank" rel="noopener" href="https://github.com/xiangming/landscape-plus.git">https://github.com/xiangming/landscape-plus.git</a></li>
-</ul>
-<p><img src="https://uploader.shimo.im/f/bBTovn3MT02oY1ke.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g" alt="图片"></p>
-<ul>
-<li>next：<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next.git">https://github.com/theme-next/hexo-theme-next.git</a>themes/hexo-theme-next</li>
-</ul>
-<p><img src="https://uploader.shimo.im/f/8KpiKtwnQ6VomQI3.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g" alt="图片"></p>
-<p>当然，上面两幅图只是原始框架，后续可以进行一系列DIY</p>
-<ul>
-<li>比如这样↓</li>
-</ul>
-<p><img src="https://uploader.shimo.im/f/pmKaPM2xHZ4ULF1B.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g" alt="图片"></p>
-<ul>
-<li>然后这样↓</li>
-</ul>
-<p><img src="https://uploader.shimo.im/f/rn7JZbh4xLuvYjTI.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g" alt="图片"></p>
-<ul>
-<li>You can do whatever you want here!<h2 id="自定义Blog各部分的样式"><a href="#自定义Blog各部分的样式" class="headerlink" title="自定义Blog各部分的样式"></a>自定义Blog各部分的样式</h2></li>
-</ul>
-<ol>
-<li>更改背景、字体颜色：<ol>
-<li>找到你的blog本地存储位置\themes\hexo-theme-next\source\css_variables\Mist.styl</li>
-<li>(这里我所使用的副主题名字是Mist，你的可以在你的博客页脚看到)<img src="https://uploader.shimo.im/f/8l2jXIFN2cJ2zegQ.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g" alt="图片"></li>
-<li>该样式文件中都是语义化的属性，直接改等号右边的颜色值就行，如$content-bg-color = rgba(0,0,0,0.5);</li>
-<li>找到–你的blog本地存储位置\themes\hexo-theme-next\source\css_colors.styl</li>
-<li>从中修改相应部分的颜色即可</li>
-</ol>
-</li>
-<li>为body部分添加背景图片<ol>
-<li>找到–你的blog本地存储位置\source</li>
-<li>新建**名为”_data”**的文件夹</li>
-<li>在<strong>_data</strong>文件夹下新建styles.styl文件</li>
-<li>输入以下代码<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line"> 	<span class="attribute">background</span>:<span class="built_in">url</span>(/images/background.jpg);</span><br><span class="line"> 	<span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">	<span class="attribute">background-size</span>:cover;</span><br><span class="line">    <span class="attribute">background-attachment</span>:fixed;</span><br><span class="line">    <span class="attribute">background-position</span>:<span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>然后将你想要的背景图片命名为background.jpg</li>
-<li>将其存储到–你的blog本地存储位置\themes\hexo-theme-next\source\images下即可<h3 id="3-设置侧边栏一行显示多个友链"><a href="#3-设置侧边栏一行显示多个友链" class="headerlink" title="3.设置侧边栏一行显示多个友链"></a>3.设置侧边栏一行显示多个友链</h3></li>
-</ol>
-</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43971764/article/details/96583122">转载：https://blog.csdn.net/weixin_43971764/article/details/96583122</a></p>
-<ul>
-<li>NEXT主题官网：<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/theme-settings.html">http://theme-next.iissnan.com/theme-settings.html</a><h2 id="如何编辑并发布文章"><a href="#如何编辑并发布文章" class="headerlink" title="如何编辑并发布文章"></a>如何编辑并发布文章</h2></li>
-</ul>
-<ol>
-<li><p>创建一篇文章</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文章名字&quot;</span><br></pre></td></tr></table></figure>
-<p>创建的文章会出现在 source/_posts 文件夹下，是 MarkDown 格式。<br>可以使用记事本直接编辑</p>
-</li>
-<li><p>填写文章首部信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: demo # 自动创建</span><br><span class="line">date: 2020-03-03 17:01:24 # 自动创建</span><br><span class="line">tags:</span><br><span class="line">- Github</span><br><span class="line">categories:</span><br><span class="line">- Github</span><br><span class="line">---</span><br><span class="line">## 标题1</span><br><span class="line">正文1</span><br><span class="line">## 标题2</span><br><span class="line">正文2</span><br></pre></td></tr></table></figure>
-<p>开头下方撰写正文，MarkDown 格式书写即可。</p>
-</li>
-<li><p>使用编辑器进行编辑</p>
-<ol>
-<li>可以简单一些</li>
-<li>直接使用MarkDown或石墨文档编辑内容<ol>
-<li>必须在文章头部加上上述<strong>首部信息</strong>(必须是文本格式)</li>
-<li>你可以为一篇博文设置多个tags<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: [标签1,标签2,...标签n]</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li>导出为MarkDown格式，替换原来的文件即可</li>
-</ol>
-</li>
-</ol>
-<ul>
-<li>这样在下次编译的时候就会自动识别标题、时间、标签、类别等等，另外还有其他的一些参数设置，可以参考文档：<a href="https://link.zhihu.com/?target=https://hexo.io/zh-cn/docs/writing.html">https://</a><a href="https://link.zhihu.com/?target=https://hexo.io/zh-cn/docs/writing.html">hexo.io/zh-cn/docs/writ</a><a href="https://link.zhihu.com/?target=https://hexo.io/zh-cn/docs/writing.html">ing.html</a>。<h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2></li>
-</ul>
-<ol>
-<li>注意分支</li>
-</ol>
-<p>确保你选择要部署到的分支是您想要的分支</p>
-<pre><code>1. 确保你的博客本地存储位置中的_config.yml文件中branch的值为**默认分支名**
-</code></pre>
-<p><img src="https://uploader.shimo.im/f/jt4ZhSPBpaCKvnt4.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g" alt="图片"></p>
-<pre><code>2. 假设你只有main和master两个分支，那么从 2020 年 10 月 1 日开始之后GitHub默认分支已经由master改为main，我这里选择部署到master分支，我就需要先修改默认分支为master。
-3. 关于如何修改默认分支：
-</code></pre>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xuchaoxin1375/article/details/111414527">https://blog.csdn.net/xuchaoxin1375/article/details/111414527</a></p>
-<p>关于为何Github要修改主库名字：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cunfuxiao7305/article/details/109050545">https://blog.csdn.net/cunfuxiao7305/article/details/109050545</a></p>
-<p><img src="https://uploader.shimo.im/f/UnBSkZkgl0NN9VuT.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g" alt="图片"></p>
-<ol start="2">
-<li>Hexo渲染工具被删除</li>
-</ol>
-<ul>
-<li>我的Blog搭建成功之后，过了几天再次登录，竟然发现无了，报错如下</li>
-</ul>
-<p><img src="https://uploader.shimo.im/f/h1k2lh5gXEd8Tc0Q.png!thumbnail?fileGuid=TRqgCkwjwX3gKw6g" alt="图片">原因是：hexo5.0之后，将hexo渲染工具删除了，需<strong>重新手动安装</strong>，执行如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure>
-<p>之后重新部署到GitHub即可<br>3. 你需要刷新</p>
-<ul>
-<li>部署完成后，刷新你的博客页面可能不会立即看到效果，你需要刷你的Github页面或者等一等</li>
-</ul>
-<ol start="4">
-<li>属性与值之间的空格</li>
-</ol>
-<ul>
-<li><p>切记–设置config.yml文件，每个属性后面的冒号和值之间都要有一个英文空格，否则无法生效</p>
-<h3 id="5-css样式失效了…吗？"><a href="#5-css样式失效了…吗？" class="headerlink" title="5.css样式失效了…吗？"></a>5.css样式失效了…吗？</h3></li>
-<li><p>localhost运行良好，然后部署完登录页面发现css样式罢工</p>
-</li>
-<li><p>结果等了快5分钟才加载出来，原来是拖延症呀…</p>
-</li>
-<li><p>css样式Firefox、chrome和Microsoft Edge都兼容完好</p>
-</li>
-<li><p>尝试优化图片加载</p>
-<h2 id="未完待续ing…"><a href="#未完待续ing…" class="headerlink" title="未完待续ing…"></a>未完待续ing…</h2></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/01/30/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="crushdada">
-      <meta itemprop="description" content="Do what I want to do!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crushdada">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-30 21:28:41" itemprop="dateCreated datePublished" datetime="2021-01-30T21:28:41+08:00">2021-01-30</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>搭建My_Blog是一个从0到1的过程，需要不断地进行完善。初衷可能是羡慕别人有，也有些功利，方便找工作，但更多是因为想记录下生活的点滴。人生一瞬，年岁渐长，记忆是会慢慢发酵的吧。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/09/Hexo+GitHub-page=My_Blog!/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -660,7 +388,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
