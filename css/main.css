@@ -1289,7 +1289,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffd73d;
+  background: #e31311;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2549,7 +2549,7 @@ hr {
   display: inline-block;
 }
 body {
-  background: url("/images/bk1.jpg");
+  background: url("https://ae01.alicdn.com/kf/U37e9f4212b834b9ba9872da253f23ab5r.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

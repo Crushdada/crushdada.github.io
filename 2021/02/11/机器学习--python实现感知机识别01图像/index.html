@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"crushdada.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言首先，先说好即使你完全不了解机器学习、神经网络和数字图像处理的相关知识，也不用怕，因为总得有个从0到1的过程。 “这个一点也不难，其实你们自己完全能够做一个感知机”…">
+  <meta name="description" content="首先，先说好即使你完全不了解机器学习、神经网络和数字图像处理的相关知识，也不用怕，因为总得有个从0到1的过程。 “这个一点也不难，其实你们自己完全能够做一个感知机”…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习--感知机识别0&#x2F;1图像">
 <meta property="og:url" content="https://crushdada.github.io/2021/02/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0--python%E5%AE%9E%E7%8E%B0%E6%84%9F%E7%9F%A5%E6%9C%BA%E8%AF%86%E5%88%AB01%E5%9B%BE%E5%83%8F/index.html">
 <meta property="og:site_name" content="crushdada">
-<meta property="og:description" content="前言首先，先说好即使你完全不了解机器学习、神经网络和数字图像处理的相关知识，也不用怕，因为总得有个从0到1的过程。 “这个一点也不难，其实你们自己完全能够做一个感知机”…">
+<meta property="og:description" content="首先，先说好即使你完全不了解机器学习、神经网络和数字图像处理的相关知识，也不用怕，因为总得有个从0到1的过程。 “这个一点也不难，其实你们自己完全能够做一个感知机”…">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://uploader.shimo.im/f/SZxjzS1FluyxqHfZ.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8">
 <meta property="og:image" content="https://uploader.shimo.im/f/544p0OVp2eO8ujsl.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8">
@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://uploader.shimo.im/f/wFt59zmk17LmgFkO.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8">
 <meta property="og:image" content="https://uploader.shimo.im/f/D2bwMwLZ7iUcDdX0.png!thumbnail?fileGuid=htJ9wk6kP3G6Gcp8">
 <meta property="article:published_time" content="2021-02-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-02-11T15:23:13.513Z">
+<meta property="article:modified_time" content="2021-02-13T11:45:08.426Z">
 <meta property="article:author" content="crushdada">
 <meta property="article:tag" content="creative">
 <meta property="article:tag" content="python">
@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">4</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">6</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">2</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a>
 
   </li>
   </ul>
@@ -210,10 +210,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-02-11 00:00:00 / 修改时间：23:23:13" itemprop="dateCreated datePublished" datetime="2021-02-11T00:00:00+08:00">2021-02-11</time>
+              <time title="创建时间：2021-02-11 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-11T00:00:00+08:00">2021-02-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-13 19:45:08" itemprop="dateModified" datetime="2021-02-13T19:45:08+08:00">2021-02-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -235,7 +241,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先，先说好即使你完全不了解机器学习、神经网络和数字图像处理的相关知识，也不用怕，因为总得有个从0到1的过程。</p>
+        <p>首先，先说好即使你完全不了解机器学习、神经网络和数字图像处理的相关知识，也不用怕，因为总得有个从0到1的过程。</p>
 <p>“这个一点也不难，其实你们自己完全能够做一个感知机”…</p>
 <a id="more"></a>
 
@@ -395,7 +401,10 @@
     <a href="/2021/02/09/Hexo+GitHub-page=My_Blog!/" rel="prev" title="Hexo+GitHub-page=My_Blog!">
       <i class="fa fa-chevron-left"></i> Hexo+GitHub-page=My_Blog!
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/13/Hexo-%E5%85%BB%E4%B8%80%E5%8F%AA%E5%8D%9A%E5%AE%A2%E7%B2%BE%E7%81%B5(%E7%9C%8B%E6%9D%BF%E5%A8%98)/" rel="next" title="Hexo-养一只博客精灵(看板娘)">
+      Hexo-养一只博客精灵(看板娘) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -454,7 +463,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.1.</span> <span class="nav-text">机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">2.2.</span> <span class="nav-text">神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="nav-number">2.3.</span> <span class="nav-text">感知机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="nav-number">2.4.</span> <span class="nav-text">参考链接：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%E6%A6%82%E8%BF%B0"><span class="nav-number">3.</span> <span class="nav-text">实现步骤概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E6%9C%BA%E6%A8%A1%E5%9E%8B%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">感知机模型：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">实际实现：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E5%83%8F%E9%87%87%E9%9B%86"><span class="nav-number">4.1.</span> <span class="nav-text">一、图像采集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%96%E7%89%B9%E5%BE%81"><span class="nav-number">4.2.</span> <span class="nav-text">二、取特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%80%E4%BA%9B%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.3.</span> <span class="nav-text">三、一些初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%84%9F%E7%9F%A5%E6%9C%BA%E8%AE%AD%E7%BB%83%E5%87%BD%E6%95%B0"><span class="nav-number">4.4.</span> <span class="nav-text">四、感知机训练函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%AE%AD%E7%BB%83%E5%87%BD%E6%95%B0%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84cal-%E5%92%8Csign-%E5%87%BD%E6%95%B0"><span class="nav-number">4.5.</span> <span class="nav-text">五、训练函数中用到的cal()和sign()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%B5%8B%E8%AF%95%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="nav-number">4.6.</span> <span class="nav-text">六、测试感知机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#End%E3%80%81%E6%88%91%E7%9A%84%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">4.7.</span> <span class="nav-text">End、我的测试结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91"><span class="nav-number">5.</span> <span class="nav-text">踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%B8%80"><span class="nav-number">5.1.</span> <span class="nav-text">其一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BA%8C"><span class="nav-number">5.2.</span> <span class="nav-text">其二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E4%BA%8B%E6%83%85"><span class="nav-number">5.3.</span> <span class="nav-text">更有意思的事情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%8D%E8%80%85"><span class="nav-number">5.4.</span> <span class="nav-text">再者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E4%B8%8A%E6%BA%90%E7%A0%81%EF%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">附上源码：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.1.</span> <span class="nav-text">机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">1.2.</span> <span class="nav-text">神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="nav-number">1.3.</span> <span class="nav-text">感知机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">参考链接：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">实现步骤概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E6%9C%BA%E6%A8%A1%E5%9E%8B%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">感知机模型：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">实际实现：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E5%83%8F%E9%87%87%E9%9B%86"><span class="nav-number">3.1.</span> <span class="nav-text">一、图像采集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%96%E7%89%B9%E5%BE%81"><span class="nav-number">3.2.</span> <span class="nav-text">二、取特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%80%E4%BA%9B%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.3.</span> <span class="nav-text">三、一些初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%84%9F%E7%9F%A5%E6%9C%BA%E8%AE%AD%E7%BB%83%E5%87%BD%E6%95%B0"><span class="nav-number">3.4.</span> <span class="nav-text">四、感知机训练函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%AE%AD%E7%BB%83%E5%87%BD%E6%95%B0%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84cal-%E5%92%8Csign-%E5%87%BD%E6%95%B0"><span class="nav-number">3.5.</span> <span class="nav-text">五、训练函数中用到的cal()和sign()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%B5%8B%E8%AF%95%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="nav-number">3.6.</span> <span class="nav-text">六、测试感知机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#End%E3%80%81%E6%88%91%E7%9A%84%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">3.7.</span> <span class="nav-text">End、我的测试结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91"><span class="nav-number">4.</span> <span class="nav-text">踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%B8%80"><span class="nav-number">4.1.</span> <span class="nav-text">其一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BA%8C"><span class="nav-number">4.2.</span> <span class="nav-text">其二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E4%BA%8B%E6%83%85"><span class="nav-number">4.3.</span> <span class="nav-text">更有意思的事情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%8D%E8%80%85"><span class="nav-number">4.4.</span> <span class="nav-text">再者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E4%B8%8A%E6%BA%90%E7%A0%81%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">附上源码：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -470,7 +479,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -483,7 +492,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -582,5 +591,5 @@
 
   
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>
