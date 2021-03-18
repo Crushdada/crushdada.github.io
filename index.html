@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">12</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a>
 
   </li>
   </ul>
@@ -167,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/08/VUE_%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/19/Vue%20_$mount()%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -181,7 +181,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/08/VUE_%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">VUE_个人笔记</a>
+            <a href="/2021/03/19/Vue%20_$mount()%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Vue $mount()方法</a>
         </h2>
 
         <div class="post-meta">
@@ -192,7 +192,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-08 00:00:00 / 修改时间：16:41:34" itemprop="dateCreated datePublished" datetime="2021-03-08T00:00:00+08:00">2021-03-08</time>
+              <time title="创建时间：2021-03-19 00:00:00 / 修改时间：00:37:18" itemprop="dateCreated datePublished" datetime="2021-03-19T00:00:00+08:00">2021-03-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,19 +215,527 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="什么是VUE"><a href="#什么是VUE" class="headerlink" title="什么是VUE"></a>什么是VUE</h1><ol>
-<li>vue是构建用户界面的框架</li>
-<li>而JQuery属于第三方插件库</li>
-<li>框架和库的区别在于对程序侵入性的不同，当需要更换框架，你就要重构整个项目，而当需要使用其他的插件，通过无缝切换库即可</li>
+          <a id="more"></a>
+
+<h2 id="Vue-mount-方法"><a href="#Vue-mount-方法" class="headerlink" title="Vue.$mount()方法"></a>Vue.$mount()方法</h2><p>用来将自己手撕的<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#Vue-extend?fileGuid=PGDjyQVV8yrJgJ63">全局API扩展</a>或实例<strong>手动挂载</strong>到DOM上</p>
+<ul>
+<li>项目中可用于延时挂载(如在挂载前先进行其他操作、判断等)，之后再手动挂载上</li>
+<li>new Vue时，$mount和<strong>el</strong>并没有本质上的不同</li>
+</ul>
+<p>方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;   <span class="comment">//实例</span></span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> judy = Vue.extend(&#123;  <span class="comment">//扩展</span></span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> judy().$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  &#123;&#123;message&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/17/CSS3-scale()%E5%AE%9E%E7%8E%B0hover%E6%97%B6%E6%94%BE%E5%A4%A7%E9%95%9C%E5%8A%A8%E6%95%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/17/CSS3-scale()%E5%AE%9E%E7%8E%B0hover%E6%97%B6%E6%94%BE%E5%A4%A7%E9%95%9C%E5%8A%A8%E6%95%88/" class="post-title-link" itemprop="url">CSS3-scale()实现hover时放大镜动效</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-17 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-17T00:00:00+08:00">2021-03-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-19 00:22:38" itemprop="dateModified" datetime="2021-03-19T00:22:38+08:00">2021-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<h2 id="CSS设置图片hover时放大镜动效"><a href="#CSS设置图片hover时放大镜动效" class="headerlink" title="CSS设置图片hover时放大镜动效"></a>CSS设置图片hover时放大镜动效</h2><pre><code>1. 需要给`&lt;img&gt;`加一个父元素，设置`overflow:hidden`
+2. 使用scale(&quot;比例&quot;)将元素基于中心按比例缩放
+</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-class">.father</span> &#123;</span><br><span class="line">      <span class="attribute">cursor</span>: pointer;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">      <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">img</span> &#123;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">      <span class="attribute">transition</span>: transform <span class="number">0.3s</span>; <span class="comment">/*规定设置过渡效果的CSS属性的名称和时间*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">img</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">      <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.1</span>);  <span class="comment">/*放大1.1倍*/</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;...&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>CSS<code>transform</code>属性对元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。详见：<a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-transform.html?fileGuid=jg8T3tjVGKJ6r8H8">CSS transform属性</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/15/HTML%E5%B1%9E%E6%80%A7%E5%92%8CDOM%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/15/HTML%E5%B1%9E%E6%80%A7%E5%92%8CDOM%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">HTML属性和DOM属性的区别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-15 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-15T00:00:00+08:00">2021-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-19 00:27:11" itemprop="dateModified" datetime="2021-03-19T00:27:11+08:00">2021-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<h1 id="HTML属性和DOM属性的区别"><a href="#HTML属性和DOM属性的区别" class="headerlink" title="HTML属性和DOM属性的区别"></a>HTML属性和DOM属性的区别</h1><h2 id="页面是如何形成的–"><a href="#页面是如何形成的–" class="headerlink" title="页面是如何形成的–"></a>页面是如何形成的–</h2><ol>
+<li>请求HTML代码：浏览器发出请求，TCP/IP三次握手后，服务器返回给HTML代码</li>
+<li>解析HTML：浏览器使用HTML解析器解析HTML代码并构建DOM树</li>
+<li>解析CSS：浏览器使用CSS解析器构建样式表规则</li>
+<li>DOM嵌套：浏览器按从上到下，从左到右的顺序将DOM树压入文档流，检测节点间的层级结构，完成嵌套</li>
+<li>DOM布局：将嵌套完成的DOM节点布局到页面上</li>
+<li>渲染DOM</li>
 </ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/08/VUE_%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<p>综上，DOM元素是经浏览器解析后的HTML元素</p>
+<ul>
+<li>HTML元素属性–attribute</li>
+<li>DOM元素属性–property</li>
+</ul>
+<p>更多资料参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44296929/article/details/103457150?fileGuid=9wQVGCgHvVj9Vx9C">https://blog.csdn.net/weixin_44296929/article/details/103457150</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/14/JS-Array_filter()%E6%95%B0%E7%BB%84%E8%BF%87%E6%BB%A4%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/14/JS-Array_filter()%E6%95%B0%E7%BB%84%E8%BF%87%E6%BB%A4%E5%99%A8/" class="post-title-link" itemprop="url">JS-Array.filter()数组过滤器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-14T00:00:00+08:00">2021-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-19 00:18:03" itemprop="dateModified" datetime="2021-03-19T00:18:03+08:00">2021-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<h2 id="JS-Array-filter-数组过滤器"><a href="#JS-Array-filter-数组过滤器" class="headerlink" title="JS  Array.filter()数组过滤器"></a>JS  Array.filter()数组过滤器</h2><pre><code>1. 该方法接收一个回调**函数**作为参数
+2. 该方法会为数组中每个元素调用一次回调函数(通过将其作为参数传入)，每次调用，要求回调函数return一个bool值
+3. 该方法会根据返回值，保留为true的元素，舍弃为false的元素
+</code></pre>
+<p>例：在一个Array中，<strong>过滤掉</strong>偶数，只保留奇数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">15</span>];</span><br><span class="line"><span class="keyword">var</span> r = arr.filter(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> !== <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line">r; <span class="comment">// [1, 5, 9, 15]</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/14/es6-Arrow%20Function%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/14/es6-Arrow%20Function%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">es6-Arrow Function箭头函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-14T00:00:00+08:00">2021-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-19 00:19:26" itemprop="dateModified" datetime="2021-03-19T00:19:26+08:00">2021-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>提供了一种更简便的函数定义方式–</p>
+<p>以往的函数写法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>箭头函数表示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x =&gt; x * x <span class="comment">//箭头左边是参数，右边是返回值</span></span><br></pre></td></tr></table></figure>
+<p>当然，也可以表示多条语句、多个参数，分别用{ }和( )即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两个参数:</span></span><br><span class="line">(x, y) =&gt; x * x + y * y</span><br><span class="line"><span class="comment">// 无参数:</span></span><br><span class="line">() =&gt; <span class="number">3.14</span></span><br><span class="line"><span class="comment">// 可变参数:</span></span><br><span class="line">(x, y, ...rest) =&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> i, sum = x + y;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;rest.length; i++) &#123;</span><br><span class="line">        sum += rest[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="一个有意思的小练习："><a href="#一个有意思的小练习：" class="headerlink" title="一个有意思的小练习："></a>一个有意思的小练习：</h3><ol>
+<li>题目请使用箭头函数简化排序时传入的函数：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="comment">//Your codes</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// 要求输出[1, 2, 10, 20]</span></span><br></pre></td></tr></table></figure></li>
+<li>我们先看看JavaScript的array.sort()方法：</li>
+</ol>
+<p>语法：<code>arrayObject.sort(sortby)</code></p>
+<p>说明：参数可选，默认无参则按照字符编码的顺序进行排序；</p>
+<p>可给出比较函数作为参数，用来编辑排序规则，该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。</p>
+<p>比较函数应该具有两个参数 a 和 b，其返回值如下：</p>
+<ul>
+<li>若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。</li>
+<li>若 a 等于 b，则返回 0。</li>
+<li>若 a 大于 b，则返回一个大于 0 的值。</li>
+</ul>
+<ol start="3">
+<li>我的答案顺应惯性思维–<code>if(x&lt;y)return -1</code></li>
+<li>但是还有更简单的(但我就是没想到)：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function">(<span class="params">x, y</span>) =&gt;</span> x-y);</span><br></pre></td></tr></table></figure>
+牛的(<em>^_^</em>)<br>更多详见：<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1022910821149312/1031549578462080?fileGuid=36qvXPtRhPcGgwHv">廖雪峰的官方网站</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/11/JS-Array_prototype_shift()%E7%9A%84%E5%A6%99%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/11/JS-Array_prototype_shift()%E7%9A%84%E5%A6%99%E7%94%A8/" class="post-title-link" itemprop="url">JS-Array.prototype.shift()的妙用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-11 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-11T00:00:00+08:00">2021-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-19 00:16:55" itemprop="dateModified" datetime="2021-03-19T00:16:55+08:00">2021-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<h1 id="arrayObect-shift"><a href="#arrayObect-shift" class="headerlink" title="arrayObect.shift()"></a>arrayObect.shift()</h1><p>用于把数组的第一个元素从其中删除，并返回第一个元素的值</p>
+<pre><code>* **注释：**该方法会改变数组的长度。
+* **提示：**要删除并返回数组的最后一个元素，请使用 pop() 方法。
+* 与`arrayObect.push()`、定时器配合使用可实现轮播效果(公告栏)，第一个元素被删除后，再重新添加到数组末尾，实现轮回
+</code></pre>
+<ul>
+<li>详见 ：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift?fileGuid=kqg9QKhrVv8RjqdC">MDN Web Docs</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/10/JS-String_padStart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/10/JS-String_padStart/" class="post-title-link" itemprop="url">JS-String.padStart</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-10 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-10T00:00:00+08:00">2021-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-19 00:13:05" itemprop="dateModified" datetime="2021-03-19T00:13:05+08:00">2021-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<h1 id="String-padStart-int-String"><a href="#String-padStart-int-String" class="headerlink" title="String.padStart(int,String)"></a>String.padStart(int,String)</h1><p>在字符串长度不足第一个参数时，在它的前面拼接上第二个参数，应用场景如–时间不足两位数时，在前面补0</p>
+<p>详见：<a target="_blank" rel="noopener" href="http://www.verydoc.net/javascript/00005090.html?fileGuid=XqhDRRP9JXYGDpYV">String.padStart ()</a></p>
+
       
     </div>
 
@@ -321,6 +829,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/06/Vuex%20Let_s%20Start%EF%BC%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/06/Vuex%20Let_s%20Start%EF%BC%81/" class="post-title-link" itemprop="url">Vuex Let's Start！</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-06 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-06T00:00:00+08:00">2021-03-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-19 00:06:22" itemprop="dateModified" datetime="2021-03-19T00:06:22+08:00">2021-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<h1 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h1><p><a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/?fileGuid=6JwtVvCXtqGGGgC6">Vuex</a>：Vue配套的公共数据管理工具(响应式状态存储库)，用于保存共享的数据，整个程序中的任何组件都可访问和<strong>提交数据变动</strong></p>
+<p><strong>–可用于简单实现多级组件、兄弟组件数据传递</strong></p>
+<h2 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h2><ol>
+<li><strong>导入</strong>vuex.js</li>
+<li>创建对象vuex对象(状态存储仓库store)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;  <span class="comment">//state相当于data，用于保存数据/状态</span></span><br><span class="line">    count: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>在<strong>祖先</strong>组件<strong>注册处</strong>添加<code>store：store</code></li>
+</ol>
+<p>然后…</p>
+<ol>
+<li><strong>访问共享数据</strong></li>
+</ol>
+<p>该<strong>祖先组件及其子孙组件</strong>即可通过<code>this.$store.state.count</code>，访问<strong>store</strong>中的<strong>state</strong>中的<strong>数据</strong></p>
+<ol start="2">
+<li><strong>修改共享数据</strong></li>
+</ol>
+<p>由于组件复用，当共享数据变动导致错误时，不清楚是哪个组件发生了错误，就要逐一检查，因此不建议直接修改共享数据，而采用–</p>
+<p><strong>提交数据变动</strong>：在vuex对象中添加mutation(突变)对象，与state同级，如下↓</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;  <span class="comment">//state相当于data，用于保存数据/状态</span></span><br><span class="line">    count: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">   mutations: &#123;   <span class="comment">//mutations:突变,用于保存数据变动函数</span></span><br><span class="line">    increment (state) &#123;</span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>mutations</code>中定义数据变动函数，vuex会默认为这些函数传入<code>state</code>，允许在其中使用state.数据名改变数据状态</li>
+<li>当需要数据改变时，使用<code>this.$store.commit(&#39;函数名&#39;)</code>调用<code>mutations</code>中对应的数据变动函数即可，可以理解为<strong>显式</strong>地<strong>提交了数据变动</strong></li>
+<li>这样的话，错误不在组件，而在这些数据变动函数中，因此直接到对应函数中追踪错误即可</li>
+</ul>
+<ol start="3">
+<li>getters<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    todos: [</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">&#x27;...&#x27;</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">&#x27;...&#x27;</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123; <span class="comment">//相当于实例中的computed，第一次调用后会缓存</span></span><br><span class="line">    doneTodos: <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+vuex也会将state传入，以供操作</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/03/05/%E5%B0%86%E5%8D%9A%E5%AE%A2%E4%BB%8EGitHub%E8%BF%81%E7%A7%BB%E5%88%B0Gitee/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -394,328 +1004,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/02/25/%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AEGitHub%20pages%E5%A4%AA%E6%85%A2%E7%9A%84%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="crushdada">
-      <meta itemprop="description" content="Do what I want to do!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crushdada">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/25/%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AEGitHub%20pages%E5%A4%AA%E6%85%A2%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">解决国内访问GitHub pages太慢的方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-25 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-25T00:00:00+08:00">2021-02-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-04 13:30:08" itemprop="dateModified" datetime="2021-03-04T13:30:08+08:00">2021-03-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/My-Blog/" itemprop="url" rel="index"><span itemprop="name">My_Blog</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>转载自–陈锐</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/craig_cc/article/details/105560504">https://blog.csdn.net/craig_cc/article/details/105560504</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/25/%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AEGitHub%20pages%E5%A4%AA%E6%85%A2%E7%9A%84%E6%96%B9%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/02/13/Hexo-%E5%85%BB%E4%B8%80%E5%8F%AA%E5%8D%9A%E5%AE%A2%E7%B2%BE%E7%81%B5(%E7%9C%8B%E6%9D%BF%E5%A8%98)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="crushdada">
-      <meta itemprop="description" content="Do what I want to do!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crushdada">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/13/Hexo-%E5%85%BB%E4%B8%80%E5%8F%AA%E5%8D%9A%E5%AE%A2%E7%B2%BE%E7%81%B5(%E7%9C%8B%E6%9D%BF%E5%A8%98)/" class="post-title-link" itemprop="url">Hexo-养一只博客精灵(看板娘)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-02-13 00:00:00 / 修改时间：20:59:32" itemprop="dateCreated datePublished" datetime="2021-02-13T00:00:00+08:00">2021-02-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/My-Blog/" itemprop="url" rel="index"><span itemprop="name">My_Blog</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>博客搭建完毕之后，会不会觉得有些单调？那么，添加一只萌萌的看板娘吧！</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/13/Hexo-%E5%85%BB%E4%B8%80%E5%8F%AA%E5%8D%9A%E5%AE%A2%E7%B2%BE%E7%81%B5(%E7%9C%8B%E6%9D%BF%E5%A8%98)/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/02/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0--python%E5%AE%9E%E7%8E%B0%E6%84%9F%E7%9F%A5%E6%9C%BA%E8%AF%86%E5%88%AB01%E5%9B%BE%E5%83%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="crushdada">
-      <meta itemprop="description" content="Do what I want to do!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crushdada">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0--python%E5%AE%9E%E7%8E%B0%E6%84%9F%E7%9F%A5%E6%9C%BA%E8%AF%86%E5%88%AB01%E5%9B%BE%E5%83%8F/" class="post-title-link" itemprop="url">机器学习--感知机识别0/1图像</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-11 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-11T00:00:00+08:00">2021-02-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-05 14:38:45" itemprop="dateModified" datetime="2021-03-05T14:38:45+08:00">2021-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先，先说好即使你完全不了解机器学习、神经网络和数字图像处理的相关知识，也不用怕，因为总得有个从0到1的过程。</p>
-<p>“这个一点也不难，其实你们自己完全能够做一个感知机”…</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0--python%E5%AE%9E%E7%8E%B0%E6%84%9F%E7%9F%A5%E6%9C%BA%E8%AF%86%E5%88%AB01%E5%9B%BE%E5%83%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/2021/02/09/Hexo+GitHub-page=My_Blog!/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="crushdada">
-      <meta itemprop="description" content="Do what I want to do!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crushdada">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/09/Hexo+GitHub-page=My_Blog!/" class="post-title-link" itemprop="url">Hexo+GitHub-page=My_Blog!</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-09 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-09T00:00:00+08:00">2021-02-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-05 14:39:17" itemprop="dateModified" datetime="2021-03-05T14:39:17+08:00">2021-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/My-Blog/" itemprop="url" rel="index"><span itemprop="name">My_Blog</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="整体步骤参考链接"><a href="#整体步骤参考链接" class="headerlink" title="整体步骤参考链接"></a>整体步骤参考链接</h2><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/d8072ac47aca0fec95cefd2d.html">https://jingyan.baidu.com/article/d8072ac47aca0fec95cefd2d.html</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/09/Hexo+GitHub-page=My_Blog!/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -782,7 +1075,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -795,7 +1088,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
