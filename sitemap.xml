@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://crushdada.github.io/archives/Vue_config_productionTip%E7%9A%84%E4%BD%9C%E7%94%A8/</loc>
+    
+    <lastmod>2021-03-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/archives/Vue-Plugin%E8%AF%A6%E8%A7%A3/</loc>
+    
+    <lastmod>2021-03-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/archives/ElementUI%20&%20MintUI/</loc>
+    
+    <lastmod>2021-03-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/archives/Vue%20CLI%20Let_s%20start!/</loc>
+    
+    <lastmod>2021-03-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/archives/Vue%20%E9%80%89%E9%A1%B9%E6%95%B0%E6%8D%AE/</loc>
+    
+    <lastmod>2021-03-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/archives/Vue%20%E7%89%B9%E6%AE%8A%E7%89%B9%E6%80%A7/</loc>
+    
+    <lastmod>2021-03-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/archives/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%96%B9%E6%B3%95(%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90)/</loc>
+    
+    <lastmod>2021-03-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://crushdada.github.io/archives/Hexo%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%90%8E%E7%BB%ADSEO%E4%BC%98%E5%8C%96/</loc>
     
     <lastmod>2021-03-21</lastmod>
@@ -221,7 +270,7 @@
 
   <url>
     <loc>https://crushdada.github.io/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -229,112 +278,133 @@
   
   <url>
     <loc>https://crushdada.github.io/tags/CSS3/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/HTML/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Hexo/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/%E7%9C%8B%E6%9D%BF%E5%A8%98/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/GitHub-Pages/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/JavaScript/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Vue-Router/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Vue/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/CSS/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/JS/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Gitee-Pages/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/es6/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/python/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/SEO/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/tags/ElementUI/</loc>
+    <lastmod>2021-03-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/tags/Vue-Cli/</loc>
+    <lastmod>2021-03-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/tags/Vue-Plugin/</loc>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -343,14 +413,14 @@
   
   <url>
     <loc>https://crushdada.github.io/categories/Code/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/categories/My-Blog/</loc>
-    <lastmod>2021-03-21</lastmod>
+    <lastmod>2021-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
