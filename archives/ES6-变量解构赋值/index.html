@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-mine.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crushdada.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="ES6-变量解构赋值变量解构赋值">
+<meta property="og:url" content="https://crushdada.github.io/archives/ES6-%E5%8F%98%E9%87%8F%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">
+<meta property="og:site_name" content="crushdada">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-03-29T15:43:46.207Z">
+<meta property="article:author" content="crushdada">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="es6">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://crushdada.github.io/archives/ES6-%E5%8F%98%E9%87%8F%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ES6-变量解构赋值变量解构赋值 | crushdada</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">crushdada</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活的点滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYS9DcnVzaGRhZGEuZ2l0aHViLmlv" title="Crushdada GitHub" aria-label="Crushdada GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/archives/ES6-%E5%8F%98%E9%87%8F%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ES6-变量解构赋值变量解构赋值
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-28 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-28T00:00:00+08:00">2021-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-29 23:43:46" itemprop="dateModified" datetime="2021-03-29T23:43:46+08:00">2021-03-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><escape><a id="more"></a></escape></p>
+<h1 id="ES6-变量解构赋值变量解构赋值"><a href="#ES6-变量解构赋值变量解构赋值" class="headerlink" title="ES6-变量解构赋值变量解构赋值"></a>ES6-变量解构赋值变量解构赋值</h1><ul>
+<li>ES6允许从对象或数组中提取值，对变量进行赋值，这被称为解构赋值</li>
+<li>凡是有迭代器接口的数据，就都可以解构，常见的有迭代器接口的数据就是数组、对象<h2 id="举例：数组的解构"><a href="#举例：数组的解构" class="headerlink" title="举例：数组的解构"></a>举例：数组的解构</h2></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> players = [<span class="string">&#x27;uzi&#x27;</span>,<span class="string">&#x27;meiko&#x27;</span>,<span class="string">&#x27;mlxg&#x27;</span>];</span><br><span class="line"><span class="keyword">let</span> [a,b,c,d] = players; <span class="comment">//声明了四个变量，对应数组中各元素的值</span></span><br></pre></td></tr></table></figure>
+<h2 id="举例：对象的解构"><a href="#举例：对象的解构" class="headerlink" title="举例：对象的解构"></a>举例：对象的解构</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  attribute: <span class="string">&#x27;法外狂徒&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">dosth</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="string">&quot;搞事情&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> &#123;name,attribute,dosth&#125; = person; <span class="comment">//对象赋值解构</span></span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">//‘张三’</span></span><br><span class="line">dosth(); <span class="comment">//&#x27;搞事情&#x27;，意味着可以直接使用，不必使用  对象.方法 </span></span><br></pre></td></tr></table></figure>
+<h2 id="解构赋值的本质"><a href="#解构赋值的本质" class="headerlink" title="解构赋值的本质"></a>解构赋值的本质</h2><ul>
+<li><p>解构赋值本质是<strong>模式匹配**</strong>–**</p>
+</li>
+<li><p>可以简单理解为：<strong>等号左右两边，由数组符号[]和对象符号{}组成的架构，必须是匹配的</strong>，元素可以多一点少一点没关系，未匹配到<strong>默认</strong>的为undefined，但是模式不匹配，会直接报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, [[b], c]] = [<span class="number">1</span>, [[<span class="number">2</span>], <span class="number">3</span>]];</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// 3</span></span><br><span class="line"><span class="keyword">let</span> [,,c] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// 3</span></span><br><span class="line"><span class="keyword">let</span> [,c,] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// 2</span></span><br><span class="line"><span class="keyword">let</span> [a,b] = [<span class="number">1</span>];  <span class="comment">//轮不到赋值的变量，值为undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="keyword">let</span> [a, [b,c]] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];  <span class="comment">//模式不匹配，直接报错</span></span><br><span class="line">a; <span class="comment">// Uncaught TypeError: undefined is not a function</span></span><br></pre></td></tr></table></figure>
+<h2 id="剩余符号的用法"><a href="#剩余符号的用法" class="headerlink" title="剩余符号的用法"></a>剩余符号的用法</h2></li>
+<li><p>剩余符号就是<code>...</code>，也就是三个点，表示剩下的我全包了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, ...b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// [2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>只允许用在最后一个变量的身前。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, ...b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(b); </span><br><span class="line"><span class="comment">// Uncaught SyntaxError: Rest element must be last element</span></span><br></pre></td></tr></table></figure></li>
+<li><p>如果剩余变量轮不到赋值，默认值不是undefined，而是空数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a,b,...c] = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// []</span></span><br></pre></td></tr></table></figure>
+<h2 id="为变量指定默认值"><a href="#为变量指定默认值" class="headerlink" title="为变量指定默认值"></a>为变量指定默认值</h2></li>
+<li><p>若该变量未匹配到，则默认值生效</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a,b = <span class="number">3</span>] = [<span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></li>
+<li><p>如果轮到赋值，但赋给的是undefined，则默认值生效</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x, y = <span class="string">&#x27;3&#x27;</span>] = [<span class="string">&#x27;1&#x27;</span>, <span class="literal">undefined</span>];</span><br><span class="line"><span class="built_in">console</span>.log(y); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></li>
+<li><p>如果默认值是其他变量，那么要注意这个变量是否已经存在</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x = y, y = <span class="number">1</span>] = []; <span class="comment">//给x赋值的时候，y还不存在，报错</span></span><br><span class="line"><span class="comment">// ReferenceError: y is not defined</span></span><br><span class="line"><span class="keyword">let</span> [x = <span class="number">1</span>, y = x] = []; <span class="comment">//不会报错</span></span><br></pre></td></tr></table></figure></li>
+<li><p>解构对象时，若被赋值变量已经提前声明，则大括号不能放在行首，因为大括号写在行首，被js认为是代码块，而不是赋值的语法符号</p>
+<ul>
+<li>要么声明和赋值在同一行，要么用圆括弧包裹整个赋值语句<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; y &#125; = &#123; <span class="attr">y</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(y);  <span class="comment">//1</span></span><br><span class="line"><span class="keyword">let</span> x;</span><br><span class="line">(&#123; x &#125; = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(x);  <span class="comment">//1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>如果<strong>默认值是表达式</strong>，那么只有它真的会被赋值，js才会去计算这个表达式，如果它没有被赋值，那么js为了系统性能考虑，不会去计算这个表达式。</p>
+<h2 id="对象的解构赋值详解"><a href="#对象的解构赋值详解" class="headerlink" title="对象的解构赋值详解"></a>对象的解构赋值详解</h2></li>
+</ul>
+<p><strong>与数组的解构赋值不同–</strong></p>
+<ul>
+<li>数组是<strong>有序</strong>的，因此解构时可基于<strong>位置</strong>(<code>index</code>)</li>
+<li>对象的属性或方法<strong>没有次序</strong>，因此<strong>被赋值的变量</strong>必须与<strong>对象属性**</strong>同名**，才能取到正确的值，若匹配不到同样默认为<code>undefined</code><h3 id="引用不匹配的属性值"><a href="#引用不匹配的属性值" class="headerlink" title="引用不匹配的属性值"></a>引用不匹配的属性值</h3></li>
+</ul>
+<p>如有需求，如语义化要求，声明的<strong>变量名</strong>与要解构对象的<strong>属性名不一致</strong>，如何解构？</p>
+<p><strong>方法：</strong></p>
+<ul>
+<li>对象解构的匹配模式，实际上是<strong>根据</strong>等号左边的<strong>变量名</strong>，去匹配对象属性的key，找到后将其值赋给变量</li>
+<li>因此，只需要写成键值对<code>key:val</code>的形式，进行模式匹配即可，这样在找到对象属性的<code>key</code>后，就会将其值赋给<code>val</code><ul>
+<li>注意，解构赋值给的变量为<code>val</code>，而<code>key</code>只是作为匹配的线索，它不是变量<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; <span class="attr">a</span>: c &#125; = &#123; <span class="attr">a</span>: <span class="string">&quot;aaa&quot;</span>, <span class="attr">b</span>: <span class="string">&quot;bbb&quot;</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// &quot;aaa&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// Error: a is not defined</span></span><br><span class="line"><span class="keyword">let</span> &#123; b, <span class="attr">b</span>: &#123;<span class="attr">c</span>: d&#125; &#125; = &#123; <span class="attr">b</span>: &#123;<span class="attr">c</span>: <span class="string">&#x27;ccc&#x27;</span>&#125; &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(d); <span class="comment">// ccc</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// &#123;c: &quot;ccc&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="把数组当作对象解构"><a href="#把数组当作对象解构" class="headerlink" title="把数组当作对象解构"></a>把数组当作对象解构</h2></li>
+</ul>
+</li>
+</ul>
+<p>JavaScript一切皆对象，数组当然可以当做对象结构</p>
+<p>只需要将索引<code>index</code>当作模式匹配的线索<code>key</code>即可<strong>取出指定位置的元素</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;<span class="number">0</span>: x, <span class="number">2</span>: z&#125; = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"><span class="built_in">console</span>.log(x,z); <span class="comment">// a c</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串的解构赋值"><a href="#字符串的解构赋值" class="headerlink" title="字符串的解构赋值"></a>字符串的解构赋值</h2><p>很简单，字符串可以被拆开当做数组来解构。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, b, c, d, e] = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">a <span class="comment">// &quot;h&quot;</span></span><br><span class="line">b <span class="comment">// &quot;e&quot;</span></span><br><span class="line">c <span class="comment">// &quot;l&quot;</span></span><br><span class="line">d <span class="comment">// &quot;l&quot;</span></span><br><span class="line">e <span class="comment">// &quot;o&quot;</span></span><br></pre></td></tr></table></figure>
+<p>由于类似数组的对象都天然有一个length属性，因此还可以对这个属性解构赋值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;<span class="attr">length</span> : len&#125; = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">len <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+<h2 id="函数参数的解构赋值"><a href="#函数参数的解构赋值" class="headerlink" title="函数参数的解构赋值"></a>函数参数的解构赋值</h2><p>之前只能这么传参，这种传参的缺陷是，你需要传5个参数，往往这5个参数来自于一个数组，于是你必须事先把这个数组拆开成5个变量，然后分别传进去：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a,b,c,d,e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c + d + e;</span><br><span class="line">&#125;</span><br><span class="line">f(<span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>); <span class="comment">// 95</span></span><br></pre></td></tr></table></figure>
+<p>如果你强行想要一次性传入一个数组[19,19,19,19,19]，那就有点小麻烦，只能这样，这样的缺陷就是用下标表示变量，不够直观：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr[<span class="number">0</span>] + arr[<span class="number">1</span>] + arr[<span class="number">2</span>] + arr[<span class="number">3</span>] + arr[<span class="number">4</span>];</span><br><span class="line">&#125;</span><br><span class="line">f([<span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>]); <span class="comment">// 95</span></span><br></pre></td></tr></table></figure>
+<p>现在ES6之后，你就可以传入一个数组作为一套参数，js帮你自动解构：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">[a,b,c,d,e]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c + d + e;</span><br><span class="line">&#125;</span><br><span class="line">f([<span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>]); <span class="comment">// 95</span></span><br></pre></td></tr></table></figure>
+<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><p>函数参数也可以有默认值，都是一样的。数组元素可以空着，也可以写undefined，但不能写null，null被认为是有值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">[a,b,c = <span class="number">100</span>,d,e]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c + d + e;</span><br><span class="line">&#125;</span><br><span class="line">f([<span class="number">1</span>, <span class="number">1</span>, , <span class="number">1</span>, <span class="number">1</span>]); <span class="comment">// 104</span></span><br></pre></td></tr></table></figure>
+<h2 id="变量解构赋值的优点汇总"><a href="#变量解构赋值的优点汇总" class="headerlink" title="变量解构赋值的优点汇总"></a>变量解构赋值的优点汇总</h2><h3 id="交换变量的值的最佳方法"><a href="#交换变量的值的最佳方法" class="headerlink" title="交换变量的值的最佳方法"></a>交换变量的值的最佳方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> y = <span class="number">2</span>;</span><br><span class="line">[x, y] = [y, x];</span><br></pre></td></tr></table></figure>
+<h3 id="对数组和对象快速取值"><a href="#对数组和对象快速取值" class="headerlink" title="对数组和对象快速取值"></a>对数组和对象快速取值</h3><p>是实践中最常用的用途，尤其是从服务器传来的JSON，结构可能相当复杂，从前你要写多行语句来获取其中的每一个属性，现在就简单的一逼了。 比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> json_from_server = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;zhang&#x27;</span>,</span><br><span class="line">    age: <span class="number">16</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;wang&#x27;</span>,</span><br><span class="line">    age: <span class="number">23</span></span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"><span class="keyword">var</span> [&#123;<span class="attr">name</span>: a, <span class="attr">age</span>:b&#125;, &#123;<span class="attr">name</span>:c, <span class="attr">age</span>: d&#125;] = json_from_server;</span><br><span class="line"><span class="built_in">console</span>.log(a,b,c,d); <span class="comment">// zhang 16 wang 23</span></span><br></pre></td></tr></table></figure>
+<p>如果不用结构赋值，要怎么写呢？如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> json_from_server = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;zhang&#x27;</span>,</span><br><span class="line">    age: <span class="number">16</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;wang&#x27;</span>,</span><br><span class="line">    age: <span class="number">23</span></span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"><span class="keyword">var</span> a = json_from_server[<span class="number">0</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line"><span class="keyword">var</span> b = json_from_server[<span class="number">0</span>][<span class="string">&#x27;age&#x27;</span>];</span><br><span class="line"><span class="keyword">var</span> c = json_from_server[<span class="number">1</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line"><span class="keyword">var</span> d = json_from_server[<span class="number">1</span>][<span class="string">&#x27;age&#x27;</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a,b,c,d); <span class="comment">// zhang 16 wang 23</span></span><br></pre></td></tr></table></figure>
+<p>是不是代码很冗余？</p>
+<ul>
+<li><p>就像上面说的，函数参数能解构，所以参数名既能保持语义，又能当做数组一次性传入。</p>
+</li>
+<li><p>默认值可以直接在赋值语句里定义，就不用像以往那样专门写一行语句来设定默认值，干净了很多。</p>
+</li>
+<li><p>函数参数也能设定默认值，就不用在函数体内判断参数是否存在，然后决定设不设默认值，省却很多麻烦。</p>
+<h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2></li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS93M2Nub3RlL2RlY29uc3RydWN0aW9uLWFzc2lnbm1lbnQuaHRtbD9maWxlR3VpZD1wWFRUcHA2ZGh5cHg4M2o5">菜鸟教程-ES6解构赋值<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC84MDE0ZDU1OGEzMWQ/ZmlsZUd1aWQ9cFhUVHBwNmRoeXB4ODNqOQ==">简书-microkof：ES6变量解构赋值注意事项<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="crushdada 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/es6/" rel="tag"># es6</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/ES6-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%9A%84this%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6/" rel="prev" title="ES6-深入理解箭头函数的this绑定机制">
+      <i class="fa fa-chevron-left"></i> ES6-深入理解箭头函数的this绑定机制
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/ES6-rest%E5%8F%82%E6%95%B0%E5%92%8C%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/" rel="next" title="ES6-rest参数和扩展运算符">
+      ES6-rest参数和扩展运算符 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-%E5%8F%98%E9%87%8F%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%E5%8F%98%E9%87%8F%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">ES6-变量解构赋值变量解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A%E6%95%B0%E7%BB%84%E7%9A%84%E8%A7%A3%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">举例：数组的解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%A7%A3%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">举例：对象的解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">1.3.</span> <span class="nav-text">解构赋值的本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%A9%E4%BD%99%E7%AC%A6%E5%8F%B7%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">剩余符号的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E5%8F%98%E9%87%8F%E6%8C%87%E5%AE%9A%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">1.5.</span> <span class="nav-text">为变量指定默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.6.</span> <span class="nav-text">对象的解构赋值详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E4%B8%8D%E5%8C%B9%E9%85%8D%E7%9A%84%E5%B1%9E%E6%80%A7%E5%80%BC"><span class="nav-number">1.6.1.</span> <span class="nav-text">引用不匹配的属性值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A%E6%95%B0%E7%BB%84%E5%BD%93%E4%BD%9C%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84"><span class="nav-number">1.7.</span> <span class="nav-text">把数组当作对象解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="nav-number">1.8.</span> <span class="nav-text">字符串的解构赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="nav-number">1.9.</span> <span class="nav-text">函数参数的解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">1.9.1.</span> <span class="nav-text">默认值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%E7%9A%84%E4%BC%98%E7%82%B9%E6%B1%87%E6%80%BB"><span class="nav-number">1.10.</span> <span class="nav-text">变量解构赋值的优点汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E6%B3%95"><span class="nav-number">1.10.1.</span> <span class="nav-text">交换变量的值的最佳方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%95%B0%E7%BB%84%E5%92%8C%E5%AF%B9%E8%B1%A1%E5%BF%AB%E9%80%9F%E5%8F%96%E5%80%BC"><span class="nav-number">1.10.2.</span> <span class="nav-text">对数组和对象快速取值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%EF%BC%9A"><span class="nav-number">1.11.</span> <span class="nav-text">参考文章：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="crushdada"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">crushdada</p>
+  <div class="site-description" itemprop="description">Do what I want to do!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Crushdada"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjIyNjU5OTcyNjZAcXEuY29t" title="E-Mail → mailto:2265997266@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vUkVOMjY1MDY=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;REN26506"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9sdS1zaGktZGEtZGEtNTU=" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;lu-shi-da-da-55">知乎</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20v" title="https:&#x2F;&#x2F;gitee.com&#x2F;">Gitee</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tLw==" title="https:&#x2F;&#x2F;segmentfault.com&#x2F;">segmentfault</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jbi52dWVqcy5vcmcvdjIvZ3VpZGUvaW5kZXguaHRtbA==" title="https:&#x2F;&#x2F;cn.vuejs.org&#x2F;v2&#x2F;guide&#x2F;index.html">Vue.js</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3RoZW1lLW5leHQuaWlzc25hbi5jb20vdGhlbWUtc2V0dGluZ3MuaHRtbA==" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;theme-settings.html">Hexo-next</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zaGltby5pbS9kZXNrdG9w" title="https:&#x2F;&#x2F;shimo.im&#x2F;desktop">石墨文档</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">by Crushdada</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

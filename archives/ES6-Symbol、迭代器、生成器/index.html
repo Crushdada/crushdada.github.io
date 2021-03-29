@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-mine.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crushdada.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="ES6-Symbol、迭代器、生成器">
+<meta property="og:url" content="https://crushdada.github.io/archives/ES6-Symbol%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8/">
+<meta property="og:site_name" content="crushdada">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://uploader.shimo.im/f/zB4s6WINpOJIx4yN.png!thumbnail?fileGuid=wJxkQrh6ChWPpGTH">
+<meta property="article:published_time" content="2021-03-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-03-29T15:43:56.107Z">
+<meta property="article:author" content="crushdada">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="es6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://uploader.shimo.im/f/zB4s6WINpOJIx4yN.png!thumbnail?fileGuid=wJxkQrh6ChWPpGTH">
+
+<link rel="canonical" href="https://crushdada.github.io/archives/ES6-Symbol%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ES6-Symbol、迭代器、生成器 | crushdada</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">crushdada</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活的点滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYS9DcnVzaGRhZGEuZ2l0aHViLmlv" title="Crushdada GitHub" aria-label="Crushdada GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/archives/ES6-Symbol%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ES6-Symbol、迭代器、生成器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-29 00:00:00 / 修改时间：23:43:56" itemprop="dateCreated datePublished" datetime="2021-03-29T00:00:00+08:00">2021-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><escape><a id="more"></a></escape></p>
+<h1 id="Symbol数据类型"><a href="#Symbol数据类型" class="headerlink" title="Symbol数据类型"></a>Symbol数据类型</h1><p>ES6引入了一个内置全局函数，该函数会创建一个新的<strong>原始</strong>数据类型，表示独一无二的值</p>
+<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><ul>
+<li><strong>值**</strong>唯一**，可以用来解决命名冲突，当作唯一标识</li>
+<li><code>Symbol</code>值不能参与运算(与自己也不行)</li>
+<li><code>Symbol</code>定义的对象属性不能使用for in循环遍历<ul>
+<li>可以使用<code>Reflects.ownKeys</code>来获取对象的所有键名<h2 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h2></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="built_in">console</span>.log(a, <span class="keyword">typeof</span> a);  <span class="comment">// Symbol() symbol</span></span><br></pre></td></tr></table></figure>
+<p>创建Symbol的两种方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">Symbol</span>(<span class="string">&quot;Foo&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">Symbol</span>(<span class="string">&quot;Foo&quot;</span>);  </span><br><span class="line"><span class="built_in">console</span>.log(s1 == s2);  <span class="comment">//false</span></span><br><span class="line"><span class="keyword">let</span> s3 = <span class="built_in">Symbol</span>.for(<span class="string">&quot;Bar&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> s4 = <span class="built_in">Symbol</span>.for(<span class="string">&quot;Bar&quot;</span>);  </span><br><span class="line"><span class="built_in">console</span>.log(s1 == s2);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="七种数据类型巧记"><a href="#七种数据类型巧记" class="headerlink" title="七种数据类型巧记"></a>七种数据类型巧记</h2><p>USONB – U R SO N B</p>
+<ul>
+<li><code>Undefined</code></li>
+<li><code>String、Symbol</code></li>
+<li><code>Object</code></li>
+<li><code>Null</code></li>
+<li><code>Boolean</code></li>
+</ul>
+<hr>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><ul>
+<li><p>迭代器<code>(iterator)</code>是一种接口，为各种不同的数据结构提供统一的访问机制。也就是说，只要数据结构种部署了该接口，那么它就可以遍历</p>
+</li>
+<li><p>ES6还引入了一个新的遍历命令与之搭配：<code>for...of</code>循环遍历</p>
+<h2 id="原生具备iterator接口的数据结构："><a href="#原生具备iterator接口的数据结构：" class="headerlink" title="原生具备iterator接口的数据结构："></a><strong>原生具备iterator接口的数据结构：</strong></h2></li>
+<li><p><code>Array</code></p>
+</li>
+<li><p><code>Agruments</code></p>
+</li>
+<li><p><code>Set</code></p>
+</li>
+<li><p><code>Map</code></p>
+</li>
+<li><p><code>String</code></p>
+</li>
+<li><p><code>TypedArray</code></p>
+</li>
+<li><p><code>NodeList</code></p>
+<h2 id="底层机制"><a href="#底层机制" class="headerlink" title="底层机制"></a>底层机制</h2></li>
+</ul>
+<ol>
+<li>数据结构中，(以数组为例)，iterator接口表现为<strong>一个函数</strong></li>
+</ol>
+<p><code>Array.prototype.Symbol.iterator()</code></p>
+<ol>
+<li>它创建一个指针对象iterator，指向数据结构的起始位置</li>
+<li>其内部有一个<code>next()</code>方法用于遍历</li>
+<li>第一次调用对象的<code>next</code>方法，指针自动指向数据结构的第一个成员</li>
+<li>不断调用<code>next</code>方法，指针一直向后移动，直到指向最后一个成员</li>
+<li>每次<code>next</code>方法返回一个包含<code>value</code>和<code>done</code>属性的对象<h3 id="论证："><a href="#论证：" class="headerlink" title="论证："></a>论证：</h3></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">&#x27;浩宇&#x27;</span>,<span class="string">&#x27;Foo&#x27;</span>,<span class="string">&#x27;Bar&#x27;</span>];</span><br><span class="line"><span class="keyword">let</span> iterator = arr[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">//找到Array的prototype中--它是一个函数</span></span><br><span class="line">                  <span class="comment">//Symbol(Symbol.iterator): function values()</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator); <span class="comment">//Array Iterator &#123; &#125;  </span></span><br><span class="line">iterator.next(); <span class="comment">//Object &#123; value: &quot;浩宇&quot;, done: false &#125;  </span></span><br><span class="line">iterator.next(); <span class="comment">//Object &#123; value: &quot;Foo&quot;, done: false &#125;</span></span><br><span class="line">iterator.next(); <span class="comment">//Object &#123; value: &quot;Bar&quot;, done: false &#125;</span></span><br><span class="line">iterator.next(); <span class="comment">//Object &#123; value: undefined, done: false &#125;     </span></span><br></pre></td></tr></table></figure>
+<h2 id="与for…in区别"><a href="#与for…in区别" class="headerlink" title="与for…in区别"></a>与for…in区别</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">&#x27;浩宇&#x27;</span>,<span class="string">&#x27;Foo&#x27;</span>,<span class="string">&#x27;Bar&#x27;</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">in</span> arr)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);  <span class="comment">//0,1,2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">of</span> arr)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);  <span class="comment">//&#x27;浩宇&#x27;,&#x27;Foo&#x27;,&#x27;Bar&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>for …in保存的是键名</strong><br><strong>for …of遍历的是**</strong>键值**</p>
+<h2 id="迭代器应用"><a href="#迭代器应用" class="headerlink" title="迭代器应用"></a>迭代器应用</h2><p>自定义遍历数据</p>
+<p>举个栗子：</p>
+<p>JS原生<strong>对象中并无迭代器</strong>，此时若想随心遍历该对象中的一个数组<strong>，</strong>要怎样做呢–</p>
+<ul>
+<li><strong>手撕一个迭代器</strong>，然后用<code>for ...of</code>遍历它<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> LPL = &#123;</span><br><span class="line">        name: <span class="string">&quot;TES&quot;</span>,</span><br><span class="line">        players: [<span class="string">&quot;JackeyLove&quot;</span>, <span class="string">&quot;Karsa&quot;</span>, <span class="string">&quot;knight&quot;</span>],</span><br><span class="line">        [<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">          <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">          <span class="keyword">return</span> &#123;</span><br><span class="line">            next: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">              <span class="keyword">if</span> (index &lt; <span class="built_in">this</span>.players.length) &#123;</span><br><span class="line">                <span class="keyword">const</span> res = &#123; <span class="attr">value</span>: <span class="built_in">this</span>.players[index], <span class="attr">done</span>: <span class="literal">false</span> &#125;;</span><br><span class="line">                index++;</span><br><span class="line">                <span class="keyword">return</span> res;</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123; <span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> LPL) &#123;  <span class="comment">//JackeyLove </span></span><br><span class="line">        <span class="built_in">console</span>.log(item);     <span class="comment">//Karsa </span></span><br><span class="line">      &#125;                        <span class="comment">//knight</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><p>ES6提出了一个异步编程解决方案，语法行为与传统函数完全不同</p>
+<ul>
+<li>它是一个可以<strong>多次返回</strong>的函数</li>
+<li>用于异步编程，可解决<strong>回调地狱</strong></li>
+<li>它很像<code>Python</code>的生成器，这是因为“ES6定义<code>generator</code>标准的哥们借鉴了Python的<code>generator</code>的概念和语法”</li>
+<li>可以用<code>yield</code>返回多次<h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;    <span class="comment">//function * 函数名()&#123;&#125;</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">&quot;Foo&quot;</span>;       <span class="comment">//在函数体中使用yield关键字，当做代码分隔符</span></span><br><span class="line">  <span class="keyword">yield</span> <span class="string">&quot;Bar&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">gen();  <span class="comment">//直接调用它，并不会输出Hello World</span></span><br><span class="line"><span class="built_in">console</span>.log(gen()); <span class="comment">//Generator &#123; &#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看内部属性发现它是一个<strong>类迭代器对象</strong>，拥有和迭代器一样的<code>next</code>方法</li>
+<li>因此，直接调用时它只是<strong>创建</strong>了一个<strong>生成器对象</strong>，而<strong>没有执行代码段</strong></li>
+</ul>
+<p><img src="https://uploader.shimo.im/f/zB4s6WINpOJIx4yN.png!thumbnail?fileGuid=wJxkQrh6ChWPpGTH" alt="图片"></p>
+<h2 id="执行："><a href="#执行：" class="headerlink" title="执行："></a>执行：</h2><p>我们可以像使用迭代器那样使用它，因此有<strong>两种方式</strong>执行生成器</p>
+<ul>
+<li>使用<code>next()</code>方法<ul>
+<li><code>next()</code>方法会执行<code>generator</code>的代码，然后，每次遇到<code>yield</code>，就返回一个对象<code>&#123;value: , done: true/false&#125;</code></li>
+<li>返回的<code>value</code>就是<code>yield</code>的返回值</li>
+<li><code>done</code>表示这个<code>generator</code>是否已经执行结束了</li>
+<li>如果<code>done</code>为true，则<code>value</code>就是<code>return</code>的返回值</li>
+</ul>
+</li>
+<li>使用<code>for... of</code></li>
+</ul>
+<p>详见：<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvMTAyMjkxMDgyMTE0OTMxMi8xMDIzMDI0MzgxODE4MTEyP2ZpbGVHdWlkPXdKeGtRcmg2Q2hXUHBHVEg=">廖雪峰的官方网站：generator<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="生成器的函数可以传参"><a href="#生成器的函数可以传参" class="headerlink" title="生成器的函数可以传参"></a>生成器的函数可以传参</h2><h2 id="生成器异步编程实例"><a href="#生成器异步编程实例" class="headerlink" title="生成器异步编程实例"></a>生成器异步编程实例</h2><p>解决回调地狱</p>
+<p>需求：1s后输出111，2s后输出222，3s后输出333</p>
+<p>传统写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">111</span>);</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">222</span>);</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="number">333</span>);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<p>使用生成器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fn1 = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">111</span>);</span><br><span class="line">    iterator.next();</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> fn2 = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">222</span>);</span><br><span class="line">    iterator.next();</span><br><span class="line">  &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> fn3 = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">333</span>);</span><br><span class="line">    iterator.next();</span><br><span class="line">  &#125;, <span class="number">3000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> fn1();</span><br><span class="line">  <span class="keyword">yield</span> fn2();</span><br><span class="line">  <span class="keyword">yield</span> fn3();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> iterator = fn();</span><br><span class="line">iterator.next();</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="crushdada 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/es6/" rel="tag"># es6</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/ES6-rest%E5%8F%82%E6%95%B0%E5%92%8C%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/" rel="prev" title="ES6-rest参数和扩展运算符">
+      <i class="fa fa-chevron-left"></i> ES6-rest参数和扩展运算符
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Symbol%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">Symbol数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">使用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%B7%A7%E8%AE%B0"><span class="nav-number">1.3.</span> <span class="nav-text">七种数据类型巧记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%94%9F%E5%85%B7%E5%A4%87iterator%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">原生具备iterator接口的数据结构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6"><span class="nav-number">2.2.</span> <span class="nav-text">底层机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BA%E8%AF%81%EF%BC%9A"><span class="nav-number">2.2.1.</span> <span class="nav-text">论证：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8Efor%E2%80%A6in%E5%8C%BA%E5%88%AB"><span class="nav-number">2.3.</span> <span class="nav-text">与for…in区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%BA%94%E7%94%A8"><span class="nav-number">2.4.</span> <span class="nav-text">迭代器应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">执行：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E4%BC%A0%E5%8F%82"><span class="nav-number">3.3.</span> <span class="nav-text">生成器的函数可以传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.4.</span> <span class="nav-text">生成器异步编程实例</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="crushdada"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">crushdada</p>
+  <div class="site-description" itemprop="description">Do what I want to do!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Crushdada"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjIyNjU5OTcyNjZAcXEuY29t" title="E-Mail → mailto:2265997266@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vUkVOMjY1MDY=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;REN26506"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9sdS1zaGktZGEtZGEtNTU=" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;lu-shi-da-da-55">知乎</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20v" title="https:&#x2F;&#x2F;gitee.com&#x2F;">Gitee</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tLw==" title="https:&#x2F;&#x2F;segmentfault.com&#x2F;">segmentfault</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jbi52dWVqcy5vcmcvdjIvZ3VpZGUvaW5kZXguaHRtbA==" title="https:&#x2F;&#x2F;cn.vuejs.org&#x2F;v2&#x2F;guide&#x2F;index.html">Vue.js</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3RoZW1lLW5leHQuaWlzc25hbi5jb20vdGhlbWUtc2V0dGluZ3MuaHRtbA==" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;theme-settings.html">Hexo-next</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zaGltby5pbS9kZXNrdG9w" title="https:&#x2F;&#x2F;shimo.im&#x2F;desktop">石墨文档</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">by Crushdada</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
