@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://crushdada.github.io/archives/ES7-%E6%96%B0%E7%89%B9%E6%80%A7%EF%BC%9Aasync&await/</loc>
+    <loc>https://crushdada.github.io/tributepage/</loc>
+    
+    <lastmod>2021-04-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://crushdada.github.io/archives/ES6-%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%E7%9A%84%E6%89%A9%E5%B1%95/</loc>
     
     <lastmod>2021-04-03</lastmod>
     
@@ -16,14 +23,7 @@
   </url>
   
   <url>
-    <loc>https://crushdada.github.io/archives/ES6-%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%E7%9A%84%E6%89%A9%E5%B1%95/</loc>
-    
-    <lastmod>2021-04-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://crushdada.github.io/archives/ES6-%E6%95%B0%E5%80%BC(%E5%AF%B9%E8%B1%A1)%E6%89%A9%E5%B1%95/</loc>
+    <loc>https://crushdada.github.io/archives/ES7-%E6%96%B0%E7%89%B9%E6%80%A7%EF%BC%9Aasync&await/</loc>
     
     <lastmod>2021-04-03</lastmod>
     
@@ -37,6 +37,13 @@
   </url>
   
   <url>
+    <loc>https://crushdada.github.io/archives/ES6-Promise%EF%BC%9A%E8%A7%A3%E5%86%B3%E5%9B%9E%E8%B0%83%E5%9C%B0%E7%8B%B1/</loc>
+    
+    <lastmod>2021-04-03</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://crushdada.github.io/archives/ES6-set%E9%9B%86%E5%90%88%E5%8F%8A%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2021-04-03</lastmod>
@@ -44,7 +51,7 @@
   </url>
   
   <url>
-    <loc>https://crushdada.github.io/archives/ES6-Promise%EF%BC%9A%E8%A7%A3%E5%86%B3%E5%9B%9E%E8%B0%83%E5%9C%B0%E7%8B%B1/</loc>
+    <loc>https://crushdada.github.io/archives/ES6-%E6%95%B0%E5%80%BC(%E5%AF%B9%E8%B1%A1)%E6%89%A9%E5%B1%95/</loc>
     
     <lastmod>2021-04-03</lastmod>
     
@@ -352,13 +359,6 @@
   </url>
   
   <url>
-    <loc>https://crushdada.github.io/about/</loc>
-    
-    <lastmod>2021-02-09</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://crushdada.github.io/categories/</loc>
     
     <lastmod>2021-02-09</lastmod>
@@ -368,7 +368,7 @@
 
   <url>
     <loc>https://crushdada.github.io/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -376,133 +376,133 @@
   
   <url>
     <loc>https://crushdada.github.io/tags/CSS3/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/HTML/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Hexo/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/%E7%9C%8B%E6%9D%BF%E5%A8%98/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/GitHub-Pages/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/JavaScript/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Vue-Router/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Vue/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/CSS/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/JS/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Gitee-Pages/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/es6/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/python/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/SEO/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/ElementUI/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Vue-Cli/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/tags/Vue-Plugin/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -511,14 +511,14 @@
   
   <url>
     <loc>https://crushdada.github.io/categories/Code/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://crushdada.github.io/categories/My-Blog/</loc>
-    <lastmod>2021-04-03</lastmod>
+    <lastmod>2021-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
