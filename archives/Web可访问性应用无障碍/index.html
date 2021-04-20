@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-mine.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crushdada.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Web可访问性&#x2F;应用无障碍">
+<meta property="og:url" content="https://crushdada.github.io/archives/Web%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E5%BA%94%E7%94%A8%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<meta property="og:site_name" content="crushdada">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://crushdada.github.io/archives/Web%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E5%BA%94%E7%94%A8%E6%97%A0%E9%9A%9C%E7%A2%8D/roundhouseDestruction.jpeg">
+<meta property="og:image" content="https://uploader.shimo.im/f/BTT7JaFhK3SW2PqG.png!thumbnail?fileGuid=h6cdCpxr6XHWdxvk">
+<meta property="og:image" content="https://uploader.shimo.im/f/AybYV2srnO18RjlS.png!thumbnail?fileGuid=h6cdCpxr6XHWdxvk">
+<meta property="og:image" content="https://uploader.shimo.im/f/QEiPtFkK01HjuDFF.png!thumbnail?fileGuid=h6cdCpxr6XHWdxvk">
+<meta property="article:published_time" content="2021-04-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-20T15:54:02.168Z">
+<meta property="article:author" content="crushdada">
+<meta property="article:tag" content="HTML5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://crushdada.github.io/archives/Web%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E5%BA%94%E7%94%A8%E6%97%A0%E9%9A%9C%E7%A2%8D/roundhouseDestruction.jpeg">
+
+<link rel="canonical" href="https://crushdada.github.io/archives/Web%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E5%BA%94%E7%94%A8%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Web可访问性/应用无障碍 | crushdada</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">crushdada</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活的点滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-致敬页">
+
+    <a href="/tributepage/" rel="section"><i class="fa fa-user fa-fw"></i>致敬页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">63</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYS9DcnVzaGRhZGEuZ2l0aHViLmlv" title="Crushdada GitHub" aria-label="Crushdada GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/archives/Web%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E5%BA%94%E7%94%A8%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Web可访问性/应用无障碍
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-14T00:00:00+08:00">2021-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-20 23:54:02" itemprop="dateModified" datetime="2021-04-20T23:54:02+08:00">2021-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><escape><a id="more"></a></escape></p>
+<h1 id="Web可访问性-应用无障碍"><a href="#Web可访问性-应用无障碍" class="headerlink" title="Web可访问性/应用无障碍"></a>Web可访问性/应用无障碍</h1><h2 id="H5新标签–标签语义化"><a href="#H5新标签–标签语义化" class="headerlink" title="H5新标签–标签语义化"></a>H5新标签–标签语义化</h2><p>HTML5 添加了诸如<code>main</code>、<code>header</code>、<code>footer</code>、<code>nav</code>、<code>article</code>、<code>section</code>等新标签，它们为开发人员提供更多的选择和<strong>辅助特性</strong>。(能够辅助<strong>屏幕阅读器</strong>工作)</p>
+<ul>
+<li><p><code>section、div、article</code>的区别：</p>
+</li>
+<li><p><code>article</code>用于独立的、完整的内容</p>
+</li>
+<li><p><code>section</code>用于对与主题相关的内容进行分组。它们可以根据需要嵌套着使用。</p>
+</li>
+<li><p>举个例子：如果一本书是一个<code>article</code>的话，那么每个章节就是<code>section</code>。当内容组之间没有联系时，可以使用<code>div</code>。</p>
+<blockquote>
+<div> - 内容组
+<section> - 有联系的内容组
+<article> - 独立完整的内容</blockquote>
+</li>
+<li><p><code>nav</code>：主导航链接</p>
+<h2 id="：音频控件"><a href="#：音频控件" class="headerlink" title="：音频控件"></a><audio>：音频控件</h2></li>
+<li><p><strong>使用它：用该标签将音频源<source>包裹</strong></p>
+</li>
+<li><p>HTML5 的<code>audio</code>标签用于呈现音频内容，可以在<code>audio</code>上下文中为音频内容添加<strong>文字说明</strong>或者<strong>字幕链接</strong>，使听觉障碍用户也能获取音频中的信息。</p>
+</li>
+<li><p><code>audio</code>的<code>controls</code>属性：使浏览器为音频提供具有<strong>开始、暂停等</strong>功能的<strong>播放控件</strong>。</p>
+<ul>
+<li><code>controls</code>是一个布尔属性，只要这个属性出现在<code>audio</code>标签中，浏览器就会开启播放控件。</li>
+</ul>
+</li>
+</ul>
+<p>举个例子：</p>
+<blockquote>
+<audio controls>
+<source src="audio/meow.mp3" type="audio/mpeg" />
+<source src="audio/meow.ogg" type="audio/ogg" />
+</audio>
+</blockquote>
+<h2 id="使用-figure-元素提高图表的可访问性"><a href="#使用-figure-元素提高图表的可访问性" class="headerlink" title="使用 figure 元素提高图表的可访问性"></a>使用 figure 元素提高图表的可访问性</h2><ul>
+<li>HTML5 引入了<code>figure</code>标签以及与之相关的<code>figcaption</code>标签。</li>
+<li>它们一起用于展示可视化信息（如：图片、图表）及其标题。</li>
+<li>这样通过语义化对内容进行分组并配以用于解释<code>figure</code>的文字，可以极大的提升内容的可访问性。</li>
+</ul>
+<p>对于图表之类的可视化数据，标题可以为屏幕阅读器用户提供简要的说明。但是这里有一个难点，如何处理那些超出屏幕可视范围（使用 CSS ）的表格版本的图表数据，以使屏幕阅读器用户也可以获取信息。</p>
+<p>举个例子——注意<code>figcaption</code>包含在<code>figure</code>标签中，并且可以与其他标签组合使用：</p>
+<blockquote>
+<figure>
+<img src="roundhouseDestruction.jpeg" alt="Photo of Camper Cat executing a roundhouse kick">
+<br>
+<figcaption>
+Master Camper Cat demonstrates proper form of a roundhouse kick.
+</figcaption>
+</figure>
+</blockquote>
+<h2 id="语义化呈现单选按钮组"><a href="#语义化呈现单选按钮组" class="headerlink" title="语义化呈现单选按钮组"></a>语义化呈现单选按钮组</h2><p>使用<code>&lt;fieldset&gt;</code>包裹单选按钮组</p>
+<p>还可使用<code>&lt;legend&gt;</code>来为单选按钮组<strong>提供文字说明</strong>。(屏幕阅读器会读取该标签中文字)</p>
+<p><strong>举个栗子：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span>What level ninja are you?<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;newbie&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;levels&quot;</span> <span class="attr">value</span>=<span class="string">&quot;newbie&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;newbie&quot;</span>&gt;</span>Newbie Kitten<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;intermediate&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;levels&quot;</span> <span class="attr">value</span>=<span class="string">&quot;intermediate&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;intermediate&quot;</span>&gt;</span>Developing Student<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;master&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;levels&quot;</span> <span class="attr">value</span>=<span class="string">&quot;master&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;master&quot;</span>&gt;</span>Master<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://uploader.shimo.im/f/BTT7JaFhK3SW2PqG.png!thumbnail?fileGuid=h6cdCpxr6XHWdxvk" alt="图片"></p>
+<h2 id="：-日期选择器"><a href="#：-日期选择器" class="headerlink" title="： 日期选择器"></a><input>： 日期选择器</h2><ul>
+<li><code>input</code>标签的<code>type</code>属性指定了标签类，如<code>text</code>与<code>submit</code>类型的<code>input</code>标签</li>
+<li>HTML5 引入了<code>date</code>类型来创建时间选择器。以供用户通过点击来填写日期</li>
+<li>当点击<code>input</code>标签时，依赖于浏览器的支持，<strong>时间选择器会显示出来</strong>，这可以让用户填写表单更加容易。</li>
+<li>对于<strong>旧版本</strong>的浏览器，<code>type</code>属性的默认值是<code>text</code>。这种情况下，可以利用<code>label</code>标签或者占位文本来提示用户<code>input</code>标签的输入类型为日期。<ul>
+<li>举个栗子：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;date&quot;</span> <span class="attr">id</span>=<span class="string">&quot;pickdate&quot;</span> <span class="attr">name</span>=<span class="string">&quot;date&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src="https://uploader.shimo.im/f/AybYV2srnO18RjlS.png!thumbnail?fileGuid=h6cdCpxr6XHWdxvk" alt="图片"></li>
+</ul>
+</li>
+</ul>
+<p>点击它。。</p>
+<p><img src="https://uploader.shimo.im/f/QEiPtFkK01HjuDFF.png!thumbnail?fileGuid=h6cdCpxr6XHWdxvk" alt="图片"></p>
+<h2 id="H5-的-datatime-属性：标准化时间"><a href="#H5-的-datatime-属性：标准化时间" class="headerlink" title="H5 的 datatime 属性：标准化时间"></a>H5 的 datatime 属性：标准化时间</h2><ul>
+<li>HTML5 还引入了<code>time</code>标签与<code>datetime</code>属性来标准化时间。</li>
+<li><code>&lt;time&gt;</code>是一个行内标签，用于在页面中呈现日期或时间，而<code>datetime</code>属性保存了日期的有效格式，<strong>辅助设备可以访问这个值</strong>。</li>
+<li>通过标准化时间格式，即使时间在文本中是以非正式的或口语化的形式编写，辅助设备依然可以获取准确的时间和日期。</li>
+</ul>
+<p>举个例子：</p>
+<p><code>&lt;p&gt;Master Camper Cat officiated the cage match between Goro and Scorpion &lt;time datetime=&quot;2013-02-13&quot;&gt;last Wednesday&lt;/time&gt;, which ended in a draw.&lt;/p&gt;</code></p>
+<h2 id="自定义-CSS-让元素仅对屏幕阅读器可见"><a href="#自定义-CSS-让元素仅对屏幕阅读器可见" class="headerlink" title="自定义 CSS 让元素仅对屏幕阅读器可见"></a>自定义 CSS 让元素仅对屏幕阅读器可见</h2><p>当信息以可视化形式（如：图表）展示，而屏幕阅读器用户需要一种替代方式（如：表格）来获取信息时，该如何做呢？</p>
+<p>CSS 被用来<strong>将</strong>这些<strong>仅供屏幕阅读器使用的信息，定位到浏览器可见区域之外</strong>。</p>
+<p>举个雷子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.sr-only</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: -<span class="number">10000px</span>;  </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">top</span>: auto;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong><br>下面的 CSS 代码与上面的结果不同：</p>
+<ul>
+<li><p><code>display: none;</code>或<code>visibility: hidden;</code>会把内容彻底隐藏起来，对于屏幕阅读器也不例外</p>
+</li>
+<li><p>如果把值设置为 0px，如<code>width: 0px; height: 0px;</code>，意味着让元素脱离文档流，这样做也会让元素被屏幕阅读器忽略。</p>
+<h2 id="accesskey-属性：指定快捷键"><a href="#accesskey-属性：指定快捷键" class="headerlink" title="accesskey 属性：指定快捷键"></a>accesskey 属性：指定快捷键</h2></li>
+<li><p>HTML 提供accesskey属性，用于指定激活标签或者使标签获得焦点的快捷键，这可以使键盘用户在链接之间快速导航</p>
+</li>
+<li><p>HTML5 允许在任何标签上使用这个属性。该属性对于交互类标签（如链接、按钮、表单控件等）十分有用。”</p>
+</li>
+</ul>
+<p>举个例子：</p>
+<p><code>&lt;button accesskey=&quot;b&quot;&gt;Important Button&lt;/button</code></p>
+<h2 id="使用-tabindex-将键盘焦点添加到元素中"><a href="#使用-tabindex-将键盘焦点添加到元素中" class="headerlink" title="使用 tabindex 将键盘焦点添加到元素中"></a>使用 tabindex 将键盘焦点添加到元素中</h2><p>当用户在页面中使用 tab 键时，有些标签，如：链接、表单控件，可以自动获得焦点。它们获得焦点的顺序与它们出现在文档流中的顺序一致。</p>
+<p>我们可以通过将<code>tabindex</code>属性值设为 0，来给其他标签赋予相同的功能，如：<code>div</code>、<code>span</code>、<code>p</code>等。举个例子：</p>
+<p><code>&lt;div tabindex=&quot;0&quot;&gt;I need keyboard focus!&lt;/div&gt;</code></p>
+<p><strong>注意：</strong></p>
+<p><code>tabindex</code>属性值为负整数（通常为 -1）的标签也是有焦点的，只是不可以通过 tab 键来获得焦点。这种方法通常用于以编程的方式使内容获得焦点（如：激活用于弹出框的<code>div</code>标签）</p>
+<p>使用<code>tabindex</code>属性可以使 CSS 伪类<code>:focus</code>在标签上生效</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="crushdada 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HTML5/" rel="tag"># HTML5</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/%E5%BA%94%E7%94%A8%E8%A7%86%E8%A7%89%E8%AE%BE%E8%AE%A1%E8%BF%9B%E9%98%B6-transform%E3%80%81animation%E5%92%8C%E5%85%B3%E9%94%AE%E5%B8%A7/" rel="prev" title="应用视觉设计进阶-transform、animation和关键帧">
+      <i class="fa fa-chevron-left"></i> 应用视觉设计进阶-transform、animation和关键帧
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/CSS-%E5%93%8D%E5%BA%94%E5%BC%8FWeb%E8%AE%BE%E8%AE%A1/" rel="next" title="CSS-响应式Web设计">
+      CSS-响应式Web设计 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Web%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7-%E5%BA%94%E7%94%A8%E6%97%A0%E9%9A%9C%E7%A2%8D"><span class="nav-number">1.</span> <span class="nav-text">Web可访问性&#x2F;应用无障碍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#H5%E6%96%B0%E6%A0%87%E7%AD%BE%E2%80%93%E6%A0%87%E7%AD%BE%E8%AF%AD%E4%B9%89%E5%8C%96"><span class="nav-number">1.1.</span> <span class="nav-text">H5新标签–标签语义化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%9A%E9%9F%B3%E9%A2%91%E6%8E%A7%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">：音频控件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-figure-%E5%85%83%E7%B4%A0%E6%8F%90%E9%AB%98%E5%9B%BE%E8%A1%A8%E7%9A%84%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">使用 figure 元素提高图表的可访问性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E4%B9%89%E5%8C%96%E5%91%88%E7%8E%B0%E5%8D%95%E9%80%89%E6%8C%89%E9%92%AE%E7%BB%84"><span class="nav-number">1.4.</span> <span class="nav-text">语义化呈现单选按钮组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%9A-%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">1.5.</span> <span class="nav-text">： 日期选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5-%E7%9A%84-datatime-%E5%B1%9E%E6%80%A7%EF%BC%9A%E6%A0%87%E5%87%86%E5%8C%96%E6%97%B6%E9%97%B4"><span class="nav-number">1.6.</span> <span class="nav-text">H5 的 datatime 属性：标准化时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-CSS-%E8%AE%A9%E5%85%83%E7%B4%A0%E4%BB%85%E5%AF%B9%E5%B1%8F%E5%B9%95%E9%98%85%E8%AF%BB%E5%99%A8%E5%8F%AF%E8%A7%81"><span class="nav-number">1.7.</span> <span class="nav-text">自定义 CSS 让元素仅对屏幕阅读器可见</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#accesskey-%E5%B1%9E%E6%80%A7%EF%BC%9A%E6%8C%87%E5%AE%9A%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.8.</span> <span class="nav-text">accesskey 属性：指定快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-tabindex-%E5%B0%86%E9%94%AE%E7%9B%98%E7%84%A6%E7%82%B9%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%85%83%E7%B4%A0%E4%B8%AD"><span class="nav-number">1.9.</span> <span class="nav-text">使用 tabindex 将键盘焦点添加到元素中</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="crushdada"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">crushdada</p>
+  <div class="site-description" itemprop="description">Do what I want to do!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Crushdada"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjIyNjU5OTcyNjZAcXEuY29t" title="E-Mail → mailto:2265997266@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vUkVOMjY1MDY=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;REN26506"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9sdS1zaGktZGEtZGEtNTU=" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;lu-shi-da-da-55">知乎</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20v" title="https:&#x2F;&#x2F;gitee.com&#x2F;">Gitee</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tLw==" title="https:&#x2F;&#x2F;segmentfault.com&#x2F;">segmentfault</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jbi52dWVqcy5vcmcvdjIvZ3VpZGUvaW5kZXguaHRtbA==" title="https:&#x2F;&#x2F;cn.vuejs.org&#x2F;v2&#x2F;guide&#x2F;index.html">Vue.js</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3RoZW1lLW5leHQuaWlzc25hbi5jb20vdGhlbWUtc2V0dGluZ3MuaHRtbA==" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;theme-settings.html">Hexo-next</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zaGltby5pbS9kZXNrdG9w" title="https:&#x2F;&#x2F;shimo.im&#x2F;desktop">石墨文档</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">by Crushdada</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

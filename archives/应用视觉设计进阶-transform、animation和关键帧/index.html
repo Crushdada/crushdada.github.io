@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-mine.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crushdada.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="应用视觉设计进阶-transform、animation和关键帧">
+<meta property="og:url" content="https://crushdada.github.io/archives/%E5%BA%94%E7%94%A8%E8%A7%86%E8%A7%89%E8%AE%BE%E8%AE%A1%E8%BF%9B%E9%98%B6-transform%E3%80%81animation%E5%92%8C%E5%85%B3%E9%94%AE%E5%B8%A7/">
+<meta property="og:site_name" content="crushdada">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://uploader.shimo.im/f/2oIQemQ3X8VDWNxz.png!thumbnail?fileGuid=CdtgkyXv8YTQqxy6">
+<meta property="og:image" content="https://uploader.shimo.im/f/7G3PFZqYdWVrO02W.gif?fileGuid=CdtgkyXv8YTQqxy6">
+<meta property="og:image" content="https://uploader.shimo.im/f/ra9bLraJX9uFeqtA.gif?fileGuid=CdtgkyXv8YTQqxy6">
+<meta property="article:published_time" content="2021-04-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-20T15:52:10.537Z">
+<meta property="article:author" content="crushdada">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://uploader.shimo.im/f/2oIQemQ3X8VDWNxz.png!thumbnail?fileGuid=CdtgkyXv8YTQqxy6">
+
+<link rel="canonical" href="https://crushdada.github.io/archives/%E5%BA%94%E7%94%A8%E8%A7%86%E8%A7%89%E8%AE%BE%E8%AE%A1%E8%BF%9B%E9%98%B6-transform%E3%80%81animation%E5%92%8C%E5%85%B3%E9%94%AE%E5%B8%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>应用视觉设计进阶-transform、animation和关键帧 | crushdada</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">crushdada</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活的点滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-致敬页">
+
+    <a href="/tributepage/" rel="section"><i class="fa fa-user fa-fw"></i>致敬页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">63</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYS9DcnVzaGRhZGEuZ2l0aHViLmlv" title="Crushdada GitHub" aria-label="Crushdada GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/archives/%E5%BA%94%E7%94%A8%E8%A7%86%E8%A7%89%E8%AE%BE%E8%AE%A1%E8%BF%9B%E9%98%B6-transform%E3%80%81animation%E5%92%8C%E5%85%B3%E9%94%AE%E5%B8%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          应用视觉设计进阶-transform、animation和关键帧
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-13 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-13T00:00:00+08:00">2021-04-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-20 23:52:10" itemprop="dateModified" datetime="2021-04-20T23:52:10+08:00">2021-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><escape><a id="more"></a></escape></p>
+<h1 id="Transform属性"><a href="#Transform属性" class="headerlink" title="Transform属性"></a>Transform属性</h1><h2 id="Transform-scale：更改元素的大小"><a href="#Transform-scale：更改元素的大小" class="headerlink" title="Transform | scale：更改元素的大小"></a>Transform | scale：更改元素的大小</h2><p>CSS 属性<code>transform</code>里面的<code>scale()</code>函数，可以用来改变<strong>元素的显示比例</strong>。</p>
+<p><strong>举个雷子：</strong></p>
+<p>实现斗鱼直播间窗口–悬停放大</p>
+<p>参见–<span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3p2aWRlby8xMzU2Mjk0Mzc3NTc3NDkyNDgwP2ZpbGVHdWlkPUNkdGdreVh2OFlUUXF4eTY=">CSS3实现放大动效<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="Transform-skex：沿X轴倾斜元素"><a href="#Transform-skex：沿X轴倾斜元素" class="headerlink" title="Transform | skex：沿X轴倾斜元素"></a>Transform | skex：沿X轴倾斜元素</h2><ul>
+<li><code>skewX(x deg)</code>使元素沿着 X 轴（横向）翻转指定的角度。</li>
+<li><code>skewY(x deg)</code>使元素沿着 X 轴（横向）翻转指定的角度。</li>
+<li><code>rotate()</code>该用法和skex类似<h1 id="使用CSS创建图形"><a href="#使用CSS创建图形" class="headerlink" title="使用CSS创建图形"></a>使用CSS创建图形</h1></li>
+</ul>
+<blockquote>
+<p><strong>术语表</strong></p>
+</blockquote>
+<ul>
+<li>blur-radius =&gt; 模糊半径，</li>
+<li>spread-radius =&gt; 辐射半径，</li>
+<li>transparent =&gt; 透明的，</li>
+<li>border-radius =&gt; 圆角边框</li>
+</ul>
+<p><strong>举个雷子：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-class">.heart</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.heart</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">25px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.heart</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">top</span>: -<span class="number">25px</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/<span class="selector-tag">style</span>&gt;</span><br><span class="line">&lt;div class = &quot;heart&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://uploader.shimo.im/f/2oIQemQ3X8VDWNxz.png!thumbnail?fileGuid=CdtgkyXv8YTQqxy6" alt="图片"></p>
+<hr>
+<h1 id="CSS-的关键帧和动画"><a href="#CSS-的关键帧和动画" class="headerlink" title="CSS 的关键帧和动画"></a>CSS 的关键帧和动画</h1><blockquote>
+<p>animation–动画</p>
+</blockquote>
+<p><code>animation</code>属性控制动画的外观，总共有 8 个<code>animation</code>属性。</p>
+<p><code>animation-name</code>设置动画的名称， 也就是要绑定的选择器的<code>@keyframes</code>的名称。</p>
+<p><code>animation-duration</code>设置动画所花费的时间。</p>
+<blockquote>
+<p>@keyframes–关键帧</p>
+</blockquote>
+<p><code>@keyframes</code>规则控制动画中各阶段的变化。</p>
+<p><code>@keyframes</code>能够创建动画。</p>
+<ul>
+<li>创建动画的原理是将一套 CSS 样式逐渐变化为另一套样式。</li>
+<li>具体是通过设置动画期间对应的“frames”的 CSS 的属性<ul>
+<li>以百分比来规定改变的时间</li>
+<li>或者通过关键词“from”和“to”，等价于 0% 和 100%。</li>
+</ul>
+</li>
+<li>0% 是初始状态。100% 就是元素最后的样子</li>
+</ul>
+<p><strong>举个雷子：</strong></p>
+<p>动画开始时背景为蓝色，中间为绿色，最后为黄色</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#rect</span> &#123;</span><br><span class="line">    <span class="attribute">animation-name</span>: rainbow;</span><br><span class="line">    <span class="attribute">animation-duration</span>: <span class="number">4s</span>; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@keyframes</span> rainbow&#123;</span><br><span class="line">    0%&#123;<span class="attribute">background-color</span>:blue;&#125;</span><br><span class="line">    50%&#123;<span class="attribute">background-color</span>:green;&#125;</span><br><span class="line">    100%&#123;<span class="attribute">background-color</span>:yellow;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>往往使用伪类，如:hover搭配动画</p>
+</li>
+<li><p>但有一个问题：动画在设置的时间之后重置了，回到了动画前的样式</p>
+</li>
+<li><p>当有需求：而我们想要的效果是按钮在悬停时始终高亮</p>
+</li>
+<li><p>就需要将<code>animation-fill-mode</code>属性，来指定了<strong>在动画结束时元素的样式</strong>。</p>
+</li>
+<li><p>设置成<code>forwards</code>来实现。</p>
+</li>
+<li><p><code>animatio-fill-mode: forwards;</code></p>
+<h2 id="CSS-创建动画运动"><a href="#CSS-创建动画运动" class="headerlink" title="CSS 创建动画运动"></a>CSS 创建动画运动</h2></li>
+<li><p>当元素的<code>position</code>被指定，如<code>fixed</code>或者<code>relative</code>时</p>
+</li>
+<li><p>指定元素的偏移属性<code>right</code>、<code>left</code>、<code>top</code>和<code>bottom</code>可以用在动画规则里创建动作</p>
+</li>
+<li><p>结合关键帧@keyframes，能够实现元素的<strong>动画运动</strong></p>
+</li>
+<li><p>试一试 ：<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5mcmVlY29kZWNhbXAub25lL3Jlc3BvbnNpdmUtd2ViLWRlc2lnbi9hcHBsaWVkLXZpc3VhbC1kZXNpZ24vY3JlYXRlLW1vdmVtZW50LXVzaW5nLWNzcy1hbmltYXRpb24/ZmlsZUd1aWQ9Q2R0Z2t5WHY4WVRRcXh5Ng==">FreeCodeCamp–让元素动起来！<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="让动画一直动下去！"><a href="#让动画一直动下去！" class="headerlink" title="让动画一直动下去！"></a>让动画一直动下去！</h2></li>
+</ul>
+<p><code>animation-iteration-count</code>这个属性允许你<strong>控制动画循环的次数</strong>。</p>
+<p>栗子：</p>
+<p><code>animation-iteration-count: 3;</code></p>
+<p>在这里动画会在运行 3 次后停止</p>
+<p>如果想让动画<strong>一直运行</strong>，可以把值设置成<strong>infinite（无限）</strong>。</p>
+<p>之前练习CSS动画和关键帧时写了一个爱心，现在，我们可以使用该属性让它跳动起来！</p>
+<p>试一试：<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5mcmVlY29kZWNhbXAub25lL3Jlc3BvbnNpdmUtd2ViLWRlc2lnbi9hcHBsaWVkLXZpc3VhbC1kZXNpZ24vbWFrZS1hLWNzcy1oZWFydGJlYXQtdXNpbmctYW4taW5maW5pdGUtYW5pbWF0aW9uLWNvdW50P2ZpbGVHdWlkPUNkdGdreVh2OFlUUXF4eTY=">FreeCodeCamp–CSS写一个跳动的爱心！<i class="fa fa-external-link-alt"></i></span></p>
+<p>效果：</p>
+<p><img src="https://uploader.shimo.im/f/7G3PFZqYdWVrO02W.gif?fileGuid=CdtgkyXv8YTQqxy6" alt="图片"></p>
+<h2 id="为元素动画设置可变速率"><a href="#为元素动画设置可变速率" class="headerlink" title="为元素动画设置可变速率"></a>为元素动画设置可变速率</h2><ul>
+<li><p>可以通过<strong>协调动画过渡时间</strong>和<strong>关键帧百分比</strong>来改变动画的运动速率</p>
+</li>
+<li><p>也可直接设置<code>animation-duration</code>属性</p>
+<ul>
+<li>如：animation-duration: 1.1s;<blockquote>
+<p>或者。。</p>
+</blockquote>
+<h2 id="使用关键字更改动画定时器"><a href="#使用关键字更改动画定时器" class="headerlink" title="使用关键字更改动画定时器"></a>使用关键字更改动画定时器</h2></li>
+</ul>
+</li>
+<li><p><code>animation-timing-function</code>规定动画的速度曲线。</p>
+</li>
+<li><p>规定从样式 A 过渡到 样式B的过程中，运动中的加速和减速的过程。</p>
+</li>
+<li><p>已经有了很多<strong>预定义的值</strong>可以直接使用于大部分场景。</p>
+<ul>
+<li><code>ease</code>，慢–快–慢，它是默认值</li>
+<li><code>ease-out</code>，动画以高速开始，以低速结束;</li>
+<li><code>ease-in</code>，动画以低速开始，以高速结束；</li>
+<li><code>linear</code>，动画从头到尾的速度是相同的。</li>
+</ul>
+</li>
+</ul>
+<p>除了上述几个预定义值之外，CSS 还提供了–</p>
+<blockquote>
+<p><strong>贝塞尔曲线（Bezier curves）</strong></p>
+</blockquote>
+<ul>
+<li>用<code>cubic-bezier</code>来定义贝塞尔曲线。</li>
+<li><strong>曲线的形状代表了动画的速度</strong>。</li>
+<li>曲线在 1*1 的坐标系统内，曲线的 X 轴代表动画的时间间隔（类似于时间比例尺），Y 轴代表动画的改变。</li>
+<li><code>cubic-bezier</code>函数包含了 1 * 1 网格里的4个点：<code>p0</code>、<code>p1</code>、<code>p2</code>和<code>p3</code>。</li>
+<li>其中<code>p0</code>和<code>p3</code>是固定值，代表曲线的起始点和结束点，坐标值依次为 (0, 0) 和 (1, 1)。</li>
+<li>你只需设置另外两点的 x 值和 y 值，设置的这两点确定了曲线的形状从而确定了动画的速度曲线。</li>
+<li>在 CSS 里面通过<code>(x1, y1, x2, y2)</code>来确定<code>p1</code>和<code>p2</code>。</li>
+</ul>
+<p><strong>举个雷子：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">animation-timing-function</span>: <span class="selector-tag">cubic-bezier</span>(0.25, 0.25, 0.75, 0.75);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在上面的例子里，两个点的 x 和 y 值相等（x1 = 0.25 = y1 和 x2 = 0.75 = y2），如果你还记得初中几何，结果是从原点到点 (1, 1) 的一条直线。动画速度呈线性，效果和<code>linear</code>一致。换言之，元素匀速运动。</li>
+</ul>
+<p><strong>另一个栗子：</strong></p>
+<p>模拟杂耍球运动</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">animation-timing-function</span>: <span class="selector-tag">cubic-bezier</span>( 0.311,0.441, 0.444, 1.649);</span><br></pre></td></tr></table></figure>
+<p>效果：<br><img src="https://uploader.shimo.im/f/ra9bLraJX9uFeqtA.gif?fileGuid=CdtgkyXv8YTQqxy6" alt="图片"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="crushdada 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/%E5%BA%94%E7%94%A8%E8%A7%86%E8%A7%89%E8%AE%BE%E8%AE%A1-%E4%BC%98%E9%9B%85%E7%9A%84%E9%A2%9C%E8%89%B2%E6%B8%90%E5%8F%98/" rel="prev" title="应用视觉设计-优雅的颜色渐变">
+      <i class="fa fa-chevron-left"></i> 应用视觉设计-优雅的颜色渐变
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/Web%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E5%BA%94%E7%94%A8%E6%97%A0%E9%9A%9C%E7%A2%8D/" rel="next" title="Web可访问性/应用无障碍">
+      Web可访问性/应用无障碍 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Transform%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">Transform属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Transform-scale%EF%BC%9A%E6%9B%B4%E6%94%B9%E5%85%83%E7%B4%A0%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.1.</span> <span class="nav-text">Transform | scale：更改元素的大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transform-skex%EF%BC%9A%E6%B2%BFX%E8%BD%B4%E5%80%BE%E6%96%9C%E5%85%83%E7%B4%A0"><span class="nav-number">1.2.</span> <span class="nav-text">Transform | skex：沿X轴倾斜元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8CSS%E5%88%9B%E5%BB%BA%E5%9B%BE%E5%BD%A2"><span class="nav-number">2.</span> <span class="nav-text">使用CSS创建图形</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-%E7%9A%84%E5%85%B3%E9%94%AE%E5%B8%A7%E5%92%8C%E5%8A%A8%E7%94%BB"><span class="nav-number">3.</span> <span class="nav-text">CSS 的关键帧和动画</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-%E5%88%9B%E5%BB%BA%E5%8A%A8%E7%94%BB%E8%BF%90%E5%8A%A8"><span class="nav-number">3.1.</span> <span class="nav-text">CSS 创建动画运动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A9%E5%8A%A8%E7%94%BB%E4%B8%80%E7%9B%B4%E5%8A%A8%E4%B8%8B%E5%8E%BB%EF%BC%81"><span class="nav-number">3.2.</span> <span class="nav-text">让动画一直动下去！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E5%85%83%E7%B4%A0%E5%8A%A8%E7%94%BB%E8%AE%BE%E7%BD%AE%E5%8F%AF%E5%8F%98%E9%80%9F%E7%8E%87"><span class="nav-number">3.3.</span> <span class="nav-text">为元素动画设置可变速率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%85%B3%E9%94%AE%E5%AD%97%E6%9B%B4%E6%94%B9%E5%8A%A8%E7%94%BB%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">3.4.</span> <span class="nav-text">使用关键字更改动画定时器</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="crushdada"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">crushdada</p>
+  <div class="site-description" itemprop="description">Do what I want to do!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Crushdada"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjIyNjU5OTcyNjZAcXEuY29t" title="E-Mail → mailto:2265997266@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vUkVOMjY1MDY=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;REN26506"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9sdS1zaGktZGEtZGEtNTU=" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;lu-shi-da-da-55">知乎</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20v" title="https:&#x2F;&#x2F;gitee.com&#x2F;">Gitee</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tLw==" title="https:&#x2F;&#x2F;segmentfault.com&#x2F;">segmentfault</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jbi52dWVqcy5vcmcvdjIvZ3VpZGUvaW5kZXguaHRtbA==" title="https:&#x2F;&#x2F;cn.vuejs.org&#x2F;v2&#x2F;guide&#x2F;index.html">Vue.js</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3RoZW1lLW5leHQuaWlzc25hbi5jb20vdGhlbWUtc2V0dGluZ3MuaHRtbA==" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;theme-settings.html">Hexo-next</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zaGltby5pbS9kZXNrdG9w" title="https:&#x2F;&#x2F;shimo.im&#x2F;desktop">石墨文档</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">by Crushdada</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
