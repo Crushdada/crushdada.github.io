@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-mine.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crushdada.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="cookie和session和localstorage">
+<meta property="og:url" content="https://crushdada.github.io/archives/cookie%E5%92%8Csession%E5%92%8Clocalstorage%E5%85%A8%E9%9D%A2%E5%AF%B9%E6%AF%94/">
+<meta property="og:site_name" content="crushdada">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-13T11:31:29.900Z">
+<meta property="article:author" content="crushdada">
+<meta property="article:tag" content="面经">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://crushdada.github.io/archives/cookie%E5%92%8Csession%E5%92%8Clocalstorage%E5%85%A8%E9%9D%A2%E5%AF%B9%E6%AF%94/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>cookie和session和localstorage | crushdada</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">crushdada</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活的点滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-致敬页">
+
+    <a href="/tributepage/" rel="section"><i class="fa fa-user fa-fw"></i>致敬页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYS9DcnVzaGRhZGEuZ2l0aHViLmlv" title="Crushdada GitHub" aria-label="Crushdada GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://crushdada.github.io/archives/cookie%E5%92%8Csession%E5%92%8Clocalstorage%E5%85%A8%E9%9D%A2%E5%AF%B9%E6%AF%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="crushdada">
+      <meta itemprop="description" content="Do what I want to do!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crushdada">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cookie和session和localstorage
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-06-02T00:00:00+08:00">2021-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-13 19:31:29" itemprop="dateModified" datetime="2021-06-13T19:31:29+08:00">2021-06-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index"><span itemprop="name">Code</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><escape><a id="more"></a></escape></p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
+<p>为什么需要cookie和Session？<br>–由于Http协议的无状态性，要么在前端缓存，要么在后端维护–会话状态</p>
+</blockquote>
+<p>Web应用程序是使用HTTP协议传输数据的。<strong>而HTTP协议是无状态的协议。一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接。</strong>这就意味着<strong>服务器无法从连接上跟踪会话</strong>。</p>
+<p><strong>换句话说，如果不在传输的内容上做手脚的话，服务器无法区分不同的用户信息</strong></p>
+<h1 id="Session：会话控制"><a href="#Session：会话控制" class="headerlink" title="Session：会话控制"></a><strong>Session：会话控制</strong></h1><p>与Cookie不同的是，它保存在服务器上。</p>
+<h2 id="它是如何实现的？"><a href="#它是如何实现的？" class="headerlink" title="它是如何实现的？"></a>它是如何实现的？</h2><p>它会在服务端维护一个<strong>用户会话状态(就是Session)**，通过一个StreamID来区分不同用户，因此当你需要前后端的一个数据交互，前端发请求给服务端，就不用在请求中传重复的信息来区分不用用户的会话了，而是</strong>把跟踪会话这个活给服务端做，它会在在处理新的请求时，根据一个ID去Session中查找对应用户的会话状态**。</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h1><ul>
+<li><p>与Cookie相比，拥有更大的存储容量</p>
+</li>
+<li><p>而Cookie每次请求都会被携带发送，浪费带宽。localStorage不会</p>
+</li>
+<li><p>localStorage有自己封装好的方法，如setItem、getItem等，而使用Cookie的话，要么自己封装，要么引入第三方库</p>
+</li>
+<li><p>cookie的作用是与服务器进行交互，而localStorage仅仅是为了在本地“存储”数据</p>
+<blockquote>
+<p>localStorage–</p>
+</blockquote>
+</li>
+<li><p>减少了网络流量：存储在本地，不用再向服务器请求数据，减少了请求次数</p>
+</li>
+<li><p>性能好：从本地读数据比请求服务器上快得多</p>
+<h2 id="记一次使用"><a href="#记一次使用" class="headerlink" title="记一次使用"></a>记一次使用</h2></li>
+<li><p>朋友写了一个小练习–单页面+vue实现todolist，让我帮忙改成用localStorage存储，他的未完成和已完成的任务条目都是放在一个对象数组中的，然后每个对象有一个布尔类型的done属性区分二者，因此逻辑很简单–</p>
+</li>
+</ul>
+<p>我只需要将整个列表放在localStorage中，然后在beforeCreated钩子中从本地缓存读取它</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">beforeCreate</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.list = <span class="built_in">JSON</span>.parse(<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;toDoList&#x27;</span>)) </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>然后监听一下页面刷新/关闭事件：beforeunload</p>
+<ul>
+<li><p>在其中将list存入本地缓存即可–</p>
+<ul>
+<li>需要注意的是，localStorage只能<strong>读取字符串</strong>，因此需要借助JSON.stringify和JSON.parse来转换<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&quot;beforeunload&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line"> <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;toDoList&#x27;</span>, <span class="built_in">JSON</span>.stringify(app.list))</span><br><span class="line"><span class="comment">// e.preventDefault();</span></span><br><span class="line">  <span class="comment">// Chrome requires returnValue to be set</span></span><br><span class="line"><span class="comment">//   e.returnValue = &quot;hello&quot;;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="beforeunload事件"><a href="#beforeunload事件" class="headerlink" title="beforeunload事件"></a>beforeunload事件</h2></li>
+</ul>
+</li>
+<li><p>当浏览器窗口关闭或者刷新时，会触发beforeunload事件</p>
+</li>
+<li><p>可在该事件中使用e.preventDefault，这样点完×页面也不会立即关闭，而是弹出一个提示框，提示离开可能不会保存更改，并询问是否关闭，此时用户可以取消()</p>
+<ul>
+<li>当然也可像上面代码一样不询问</li>
+</ul>
+</li>
+<li><p>需要注意的是一个历史遗留问题：</p>
+</li>
+<li><p><code>Event.returnValue</code>属性在远古时期被用于–<strong>指定**</strong>beforeunload触发的**<strong>弹出框中的询问消息，</strong>后来被弃用(浏览器不会显示在<code>beforeunload</code>事件中创建的提示)</p>
+</li>
+<li><p>后来，H5规范建议使用e.preventDefault()而非<code>Event.returnValue</code>来实现弹出确认框这一功能，然而，<strong>不是所有浏览器都支持这么做</strong></p>
+<ul>
+<li>火狐支持preventDefault</li>
+<li>而微软Edge、chrome则仍沿用e.returnValue，尽管浏览器不会显示赋给它的任何值<blockquote>
+<p>因此，为了网页兼容，如果你需要beforeunload事件触发这么一个弹出框，<strong>最好将这两条语句都写上</strong></p>
+</blockquote>
+<h1 id="三者区别"><a href="#三者区别" class="headerlink" title="三者区别"></a>三者区别</h1></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>客户端与服务端与本地</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>Cookie是一种客户端跟踪会话的手段，用来弥补<strong>HTTP协议无状态</strong>的这种不足。</li>
+<li>Session是之后出现的，它的目的和Cookie一样，但它是用在<strong>服务端的</strong></li>
+<li>localStorage存储在本地<blockquote>
+<blockquote>
+<p>主动携带？</p>
+</blockquote>
+</blockquote>
+</li>
+<li>cookie数据始终在<strong>同源**</strong>的http请求中携带**，ajax默认不会携带</li>
+<li>session和localStorage不会<strong>自动</strong>把数据发送给服务器，<blockquote>
+<blockquote>
+<p>存储数据量的限制</p>
+</blockquote>
+</blockquote>
+</li>
+<li>cookie存储的数量和字符数量都有限制，不同浏览器限制不同，一般允许每个域名下存几十个Cookie，每个Cookie字符数量一般为4k</li>
+<li>Session和localStorage无限制<blockquote>
+<blockquote>
+<p>安全性</p>
+</blockquote>
+</blockquote>
+</li>
+<li>cookie不安全，任何人都可以查看存放在本地的Cookie，并进行一个Cookie欺骗–通过document.cookie</li>
+<li>Session安全，(因为它是保存在服务端的吗)<blockquote>
+<blockquote>
+<p>服务器压力</p>
+</blockquote>
+</blockquote>
+</li>
+<li>当网站浏览或请求次数很多的时候，使用Session会对服务器有很大的压力。</li>
+<li>而Cookie是在浏览器端的，localStorage是在本地的，不存在对服务器的压力<blockquote>
+<blockquote>
+<p>生命周期</p>
+</blockquote>
+</blockquote>
+</li>
+<li>若不指定过期时间(默认情况下)，<ul>
+<li>Cookie和Session在浏览器被关闭前会一直存在<ul>
+<li>(这种称为会话cookie，一般保存在内存里)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>当指定了过期时间<ul>
+<li>Cookie会被浏览器存储在硬盘里，因此关闭浏览器再打开cookie仍有效</li>
+<li>session：当它不活动一段时间之后会被销毁，这一段时间的长度是可以指定的</li>
+<li>localStorage长期有效，除非手动删除<blockquote>
+<blockquote>
+<p>作用域</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Cookie和localStorage在所有同源窗口都共享</li>
+<li>Session只在一个浏览器窗口共享(即使是同一个页面也不行)</li>
+</ul>
+<p><strong>参考：</strong></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC85YTU2MWIzNmU5ZjM/ZmlsZUd1aWQ9VEpHZ3JnRGpLR3h5V2tZUQ==">Cookie和Session的使用和区别–南栀倾寒You | 简书<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbDE5OTYxNmovcC8xMTE5NTY2Ny5odG1sI19sYWJlbDA/ZmlsZUd1aWQ9VEpHZ3JnRGpLR3h5V2tZUQ==">cookie和session的详解与区别–测试开发喵 | 博客园<i class="fa fa-external-link-alt"></i></span></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="crushdada 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag"># 面经</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/V-for%E5%B0%B1%E5%9C%B0%E5%A4%8D%E7%94%A8%E5%8E%9F%E7%90%86%E3%80%81%E8%99%9A%E6%8B%9FDOM%E3%80%81Diff%E7%AE%97%E6%B3%95/" rel="prev" title="V-for就地复用、虚拟DOM、Diff算法">
+      <i class="fa fa-chevron-left"></i> V-for就地复用、虚拟DOM、Diff算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/csrf%E6%94%BB%E5%87%BB/" rel="next" title="csrf攻击">
+      csrf攻击 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Session%EF%BC%9A%E4%BC%9A%E8%AF%9D%E6%8E%A7%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">Session：会话控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%83%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">它是如何实现的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#localStorage"><span class="nav-number">4.</span> <span class="nav-text">localStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8"><span class="nav-number">4.1.</span> <span class="nav-text">记一次使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#beforeunload%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text">beforeunload事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E8%80%85%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">三者区别</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="crushdada"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">crushdada</p>
+  <div class="site-description" itemprop="description">Do what I want to do!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NydXNoZGFkYQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Crushdada"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjIyNjU5OTcyNjZAcXEuY29t" title="E-Mail → mailto:2265997266@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vUkVOMjY1MDY=" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;REN26506"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9sdS1zaGktZGEtZGEtNTU=" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;lu-shi-da-da-55">知乎</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20v" title="https:&#x2F;&#x2F;gitee.com&#x2F;">Gitee</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tLw==" title="https:&#x2F;&#x2F;segmentfault.com&#x2F;">segmentfault</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jbi52dWVqcy5vcmcvdjIvZ3VpZGUvaW5kZXguaHRtbA==" title="https:&#x2F;&#x2F;cn.vuejs.org&#x2F;v2&#x2F;guide&#x2F;index.html">Vue.js</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3RoZW1lLW5leHQuaWlzc25hbi5jb20vdGhlbWUtc2V0dGluZ3MuaHRtbA==" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;theme-settings.html">Hexo-next</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9zaGltby5pbS9kZXNrdG9w" title="https:&#x2F;&#x2F;shimo.im&#x2F;desktop">石墨文档</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">by Crushdada</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
